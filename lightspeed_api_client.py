@@ -76,3 +76,17 @@ class LightspeedAPIClient:
         return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
 
 
+    def metafields_get(self, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
+        API_url = self.API_URL + 'metafields.json?'
+        API_url = API_url + 'limit=' + str(limit) + '&'
+        API_url = API_url + 'page=' + str(page) + '&'
+        API_url = API_url + 'since_id=' + str(since_id) + '&'
+        if created_at_min != '':
+            API_url = API_url + 'created_at_min=' + str(created_at_min) + '&'
+        if created_at_max != '':
+            API_url = API_url + 'created_at_max=' + str(created_at_max) + '&'
+        if updated_at_min != '':
+            API_url = API_url + 'updated_at_min=' + str(updated_at_min) + '&'
+        if updated_at_max != '':
+            API_url = API_url + 'updated_at_max=' + str(updated_at_max) + '&'
+        return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
