@@ -95,3 +95,8 @@ class LightspeedAPIClient:
     def metafields_count(self):
         API_url = self.API_URL + 'metafields/count.json'
         return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
+
+
+    def metafields_get_id(self, id):
+        API_url = self.API_URL + 'metafields/' + str(id) + '.json'
+        return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
