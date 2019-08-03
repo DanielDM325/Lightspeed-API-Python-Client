@@ -40,7 +40,7 @@ class LightspeedAPIClient:
         return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
 
 
-    def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id='', created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
+    def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'variants.json?'
         if product != '':
             API_url = API_url + 'product=' + str(product) + '&'
@@ -54,8 +54,7 @@ class LightspeedAPIClient:
             API_url = API_url + 'product=' + str(hs) + '&'
         API_url = API_url + 'limit=' + str(limit) + '&'
         API_url = API_url + 'page=' + str(page) + '&'
-        if since_id != '':
-            API_url = API_url + 'since_id=' + str(since_id) + '&'
+        API_url = API_url + 'since_id=' + str(since_id) + '&'
         if created_at_min!= '':
             API_url = API_url + 'created_at_min=' + str(created_at_min) + '&'
         if created_at_max != '':
@@ -75,3 +74,5 @@ class LightspeedAPIClient:
     def variants_get_id(self, id):
         API_url = self.API_URL + 'variants/' + str(id) + '.json'
         return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
+
+
