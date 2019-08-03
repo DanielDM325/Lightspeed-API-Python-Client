@@ -70,3 +70,8 @@ class LightspeedAPIClient:
     def variants_count(self):
         API_url = self.API_URL + 'variants/count.json'
         return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
+
+
+    def variants_get_id(self, id):
+        API_url = self.API_URL + 'variants/' + str(id) + '.json'
+        return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
