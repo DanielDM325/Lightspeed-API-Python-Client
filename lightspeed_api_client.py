@@ -65,3 +65,8 @@ class LightspeedAPIClient:
         if updated_at_max != '':
             API_url = API_url + '?updated_at_max=' + str(updated_at_max)
         return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
+
+
+    def variants_count(self):
+        API_url = self.API_URL + 'variants/count.json'
+        return requests.get(API_url, auth=(self.API_key, self.API_secret)).json()
