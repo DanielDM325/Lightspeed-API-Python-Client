@@ -91,6 +91,9 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'metafields/' + str(id) + '.json'
         return requests.get(API_url, auth=self.credentials).json()
 
+    def product_images_get_id(self, id):
+        API_url = self.API_URL + 'products/' + str(id) + '/images.json'
+        return requests.get(API_url, auth=self.credentials).json()
 
 def number_of_pages(number_of_items, page_size=50):
     return int(number_of_items / page_size) + 1
