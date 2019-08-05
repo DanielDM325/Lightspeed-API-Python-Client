@@ -101,6 +101,10 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'metafields/' + str(metafield_id) + '.json'
         payload = {'metafield[ownerType]' : owner_type, 'metafield[ownerId]' : str(owner_id), 'metafield[key]' : str(key), 'metafield[value]' : str(value), 'metafield[ownerResource]' : str(owner_id)}
         return requests.put(API_url, data=payload, auth=self.credentials).json()
+
+    def metafields_delete(self, metafield_id):
+        API_url = self.API_URL + 'metafields/' + str(metafield_id) + '.json'
+        return requests.delete(API_url, auth=self.credentials)
     
     def product_images_get(self, id):
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
