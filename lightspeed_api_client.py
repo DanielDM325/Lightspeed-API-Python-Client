@@ -1,4 +1,5 @@
 import requests
+import base64
 
 
 class LightspeedAPIClient:
@@ -95,6 +96,12 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
         return requests.get(API_url, auth=self.credentials).json()
 
+    def product_images_create(self, id, image_path, file_name):
+        API_url = self.API_URL + 'products/' + str(id) + '/images.json'
+        image = open(image_path, mode='rb').read()
+        attachment = base64.b64encode(image)
+        payload = {'productImage[attachment]' : attachment, 'productImage[filename]' : file_name}
+        return requests.post(API_url, data=payload, auth=self.credentials).json()
 
 
 def number_of_pages(number_of_items, page_size=50):
