@@ -102,6 +102,10 @@ class LightspeedAPIClient:
         attachment = base64.b64encode(image)
         payload = {'productImage[attachment]' : attachment, 'productImage[filename]' : file_name}
         return requests.post(API_url, data=payload, auth=self.credentials).json()
+    
+    def product_images_delete(self, id, product_image_id):
+        API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
+        return requests.delete(API_url, auth=self.credentials)
 
 
 def number_of_pages(number_of_items, page_size=50):
