@@ -1,4 +1,5 @@
 import requests
+import base64
 
 
 class LightspeedAPIClient:
@@ -91,9 +92,40 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'metafields/' + str(id) + '.json'
         return requests.get(API_url, auth=self.credentials).json()
 
-    def product_images_get_id(self, id):
+    def metafields_create(self, owner_type, owner_id, key, value):
+        API_url = self.API_URL + 'metafields.json'
+        payload = {'metafield[ownerType]' : owner_type, 'metafield[ownerId]' : str(owner_id), 'metafield[key]' : str(key), 'metafield[value]' : str(value), 'metafield[ownerResource]' : str(owner_id)}
+        return requests.post(API_url, data=payload, auth=self.credentials).json()
+
+    def metafields_update(self, metafield_id, owner_type, owner_id, key, value):
+        API_url = self.API_URL + 'metafields/' + str(metafield_id) + '.json'
+        payload = {'metafield[ownerType]' : owner_type, 'metafield[ownerId]' : str(owner_id), 'metafield[key]' : str(key), 'metafield[value]' : str(value), 'metafield[ownerResource]' : str(owner_id)}
+        return requests.put(API_url, data=payload, auth=self.credentials).json()
+
+    def metafields_delete(self, metafield_id):
+        API_url = self.API_URL + 'metafields/' + str(metafield_id) + '.json'
+        return requests.delete(API_url, auth=self.credentials)
+    
+    def product_images_get(self, id):
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
         return requests.get(API_url, auth=self.credentials).json()
+
+    def product_images_create(self, id, image_path, file_name):
+        API_url = self.API_URL + 'products/' + str(id) + '/images.json'
+        image = open(image_path, mode='rb').read()
+        attachment = base64.b64encode(image)
+        payload = {'productImage[attachment]' : attachment, 'productImage[filename]' : file_name}
+        return requests.post(API_url, data=payload, auth=self.credentials).json()
+    
+    def product_images_delete(self, id, product_image_id):
+        API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
+        return requests.delete(API_url, auth=self.credentials)
+
+    def product_images_update(self, id, product_image_id, sorting_order):
+        API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
+        payload = {'productImage[sortOrder]' : str(sorting_order)}
+        return requests.put(API_url, data=payload, auth=self.credentials).json()
+
 
 def number_of_pages(number_of_items, page_size=50):
     return int(number_of_items / page_size) + 1
