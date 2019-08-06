@@ -1,5 +1,6 @@
 import requests
 import base64
+import time
 
 
 class LightspeedAPIClient:
@@ -241,6 +242,29 @@ class LightspeedAPIClient:
             return response.json()
         else:
              return None
+
+    def sleep_reset(self):
+        if self.rate_limit_remaining[0] == '-1':
+            print("Waiting for reset")
+            for t in reversed(range(1, int(self.rate_limit_reset[0]) + 1)):
+                print(t, end="\r")
+                time.sleep(1)
+            print(0, end="\r")
+            print("Restarting requests")
+        elif self.rate_limit_remaining[1] == '-1':
+            print("Waiting for reset")
+            for t in reversed(range(1, int(self.rate_limit_reset[1]) + 1)):
+                print(t, end="\r")
+                time.sleep(1)
+            print(0, end="\r")
+            print("Restarting requests")
+        elif self.rate_limit_remaining[2] == '-1':
+            print("Waiting for reset")
+            for t in reversed(range(1, int(self.rate_limit_reset[2]) + 1)):
+                print(t, end="\r")
+                time.sleep(1)
+            print(0, end="\r")
+            print("Restarting requests")
 
 
 def number_of_pages(number_of_items, page_size=50):
