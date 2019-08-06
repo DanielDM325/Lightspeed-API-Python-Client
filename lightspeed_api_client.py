@@ -38,7 +38,6 @@ class LightspeedAPIClient:
             return response.json()
         else:
              return None
-        
 
     def products_count(self):
         API_url = self.API_URL + 'products/count.json'
