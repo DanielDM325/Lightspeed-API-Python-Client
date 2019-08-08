@@ -225,7 +225,7 @@ class LightspeedAPIClient:
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
         self.status_code = response.status_code
         if response.status_code == 204:
-            return response.json()
+            return response.text
         else:
             return None
 
