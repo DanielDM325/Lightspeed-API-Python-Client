@@ -239,6 +239,17 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
+    
+    def categories_product_get(self):
+        API_url = self.API_URL + 'categories/products.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
+        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
+        self.status_code = response.status_code
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
 
     def sleep_reset(self):
         if self.rate_limit_remaining[0] == '-1':
@@ -262,7 +273,7 @@ class LightspeedAPIClient:
                 time.sleep(1)
             print(0, end="\r")
             print("Restarting requests")
-
-
+    
+    
 def number_of_pages(number_of_items, page_size=50):
     return int(number_of_items / page_size) + 1
