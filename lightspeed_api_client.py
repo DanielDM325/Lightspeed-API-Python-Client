@@ -207,8 +207,6 @@ class LightspeedAPIClient:
 
     def product_images_create(self, id, image, file_name):
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
-        #image = open(image_path, mode='rb').read()
-        #attachment = base64.b64encode(image)
         payload = {'productImage[attachment]': image, 'productImage[filename]': file_name}
         response = requests.post(API_url, data=payload, auth=self.credentials)
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
