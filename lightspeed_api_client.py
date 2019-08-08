@@ -30,9 +30,7 @@ class LightspeedAPIClient:
         if updated_at_max != '':
             API_url = API_url + 'updated_at_max=' + str(updated_at_max) + '&'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -41,9 +39,7 @@ class LightspeedAPIClient:
     def products_count(self):
         API_url = self.API_URL + 'products/count.json'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -52,9 +48,7 @@ class LightspeedAPIClient:
     def products_get_id(self, id):
         API_url = self.API_URL + 'products/' + str(id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -84,9 +78,7 @@ class LightspeedAPIClient:
         if updated_at_max != '':
             API_url = API_url + 'updated_at_max=' + str(updated_at_max) + '&'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -95,9 +87,7 @@ class LightspeedAPIClient:
     def variants_count(self):
         API_url = self.API_URL + 'variants/count.json'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -106,9 +96,7 @@ class LightspeedAPIClient:
     def variants_get_id(self, id):
         API_url = self.API_URL + 'variants/' + str(id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -128,9 +116,7 @@ class LightspeedAPIClient:
         if updated_at_max != '':
             API_url = API_url + 'updated_at_max=' + str(updated_at_max) + '&'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -139,9 +125,7 @@ class LightspeedAPIClient:
     def metafields_count(self):
         API_url = self.API_URL + 'metafields/count.json'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -150,9 +134,7 @@ class LightspeedAPIClient:
     def metafields_get_id(self, id):
         API_url = self.API_URL + 'metafields/' + str(id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -162,9 +144,7 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'metafields.json'
         payload = {'metafield[ownerType]': owner_type, 'metafield[ownerId]': str(owner_id), 'metafield[key]': str(key), 'metafield[value]': str(value), 'metafield[ownerResource]': str(owner_id)}
         response = requests.post(API_url, data=payload, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 201:
             return response.json()
         else:
@@ -174,9 +154,7 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'metafields/' + str(metafield_id) + '.json'
         payload = {'metafield[ownerType]': owner_type, 'metafield[ownerId]': str(owner_id), 'metafield[key]': str(key), 'metafield[value]': str(value), 'metafield[ownerResource]': str(owner_id)}
         response = requests.put(API_url, data=payload, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -185,9 +163,7 @@ class LightspeedAPIClient:
     def metafields_delete(self, metafield_id):
         API_url = self.API_URL + 'metafields/' + str(metafield_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 204:
             return response.json()
         else:
@@ -196,9 +172,7 @@ class LightspeedAPIClient:
     def product_images_get(self, id):
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
         response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -208,9 +182,7 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
         payload = {'productImage[attachment]': image, 'productImage[filename]': file_name}
         response = requests.post(API_url, data=payload, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 201:
             return response.json()
         else:
@@ -220,9 +192,7 @@ class LightspeedAPIClient:
     def product_images_delete(self, id, product_image_id):
         API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 204:
             return response.text
         else:
@@ -232,47 +202,43 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
         payload = {'productImage[sortOrder]': str(sorting_order)}
         response = requests.put(API_url, data=payload, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
-        if response.status_code == 200:
-            return response.json()
-        else:
-            return None
-    
-    def categories_product_get(self):
-        API_url = self.API_URL + 'categories/products.json'
-        response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
-        if response.status_code == 200:
-            return response.json()
-        else:
-            return None
-    
-    def categories_product_count(self):
-        API_url = self.API_URL + 'categories/products/count.json'
-        response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
-        if response.status_code == 200:
-            return response.json()
-        else:
-            return None
-    
-    def categories_product_get_id(self, id):
-        API_url = self.API_URL + 'categories/products/' + str(id) + '.json'
-        response = requests.get(API_url, auth=self.credentials)
-        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
-        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
-        self.status_code = response.status_code
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
             return None
 
+    def categories_product_get(self):
+        API_url = self.API_URL + 'categories/products.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
+    def categories_product_count(self):
+        API_url = self.API_URL + 'categories/products/count.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
+    def categories_product_get_id(self, id):
+        API_url = self.API_URL + 'categories/products/' + str(id) + '.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+    
+    def update_status(self, response):
+        self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
+        self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
+        self.status_code = response.status_code
 
     def sleep_reset(self):
         if self.rate_limit_remaining[0] == '-1':
@@ -296,7 +262,7 @@ class LightspeedAPIClient:
                 time.sleep(1)
             print(0, end="\r")
             print("Restarting requests")
-    
-    
+
+
 def number_of_pages(number_of_items, page_size=50):
     return int(number_of_items / page_size) + 1
