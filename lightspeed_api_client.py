@@ -166,7 +166,7 @@ class LightspeedAPIClient:
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
         self.status_code = response.status_code
-        if response.status_code == 200:
+        if response.status_code == 201:
             return response.json()
         else:
              return None
@@ -189,7 +189,7 @@ class LightspeedAPIClient:
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
         self.status_code = response.status_code
-        if response.status_code == 200:
+        if response.status_code == 204:
             return response.json()
         else:
              return None
@@ -205,19 +205,20 @@ class LightspeedAPIClient:
         else:
              return None
 
-    def product_images_create(self, id, image_path, file_name):
+    def product_images_create(self, id, image, file_name):
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
-        image = open(image_path, mode='rb').read()
-        attachment = base64.b64encode(image)
-        payload = {'productImage[attachment]' : attachment, 'productImage[filename]' : file_name}
+        #image = open(image_path, mode='rb').read()
+        #attachment = base64.b64encode(image)
+        payload = {'productImage[attachment]' : image, 'productImage[filename]' : file_name}
         response = requests.post(API_url, data=payload, auth=self.credentials)
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
         self.status_code = response.status_code
-        if response.status_code == 200:
+        if response.status_code == 201:
             return response.json()
         else:
-             return None
+            print(response.status_code)
+            return None
     
     def product_images_delete(self, id, product_image_id):
         API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
@@ -225,10 +226,10 @@ class LightspeedAPIClient:
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
         self.status_code = response.status_code
-        if response.status_code == 200:
+        if response.status_code == 204:
             return response.json()
         else:
-             return None
+            return None
 
     def product_images_update(self, id, product_image_id, sorting_order):
         API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
@@ -240,7 +241,7 @@ class LightspeedAPIClient:
         if response.status_code == 200:
             return response.json()
         else:
-             return None
+            return None
 
     def sleep_reset(self):
         if self.rate_limit_remaining[0] == '-1':
