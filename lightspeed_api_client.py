@@ -92,7 +92,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def products_metafield_update(self, id, metafield_id, key, value):
         API_url = self.API_URL + 'products/' + str(id) + '/metafields/' + str(metafield_id) + '.json'
         payload = {'productMetafield[key]': str(key), 'productMetafield[value]': str(value)}
