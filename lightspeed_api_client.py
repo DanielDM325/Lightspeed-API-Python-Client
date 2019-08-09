@@ -53,7 +53,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def products_metafield_get(self, id, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'products/' + str(id) + '/metafields.json?'
         API_url = API_url + 'limit=' + str(limit) + '&'
@@ -82,7 +82,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def products_metafield_create(self, id, key, value):
         API_url = self.API_URL + 'products/' + str(id) + '/metafields.json'
         payload = {'productMetafield[key]': str(key), 'productMetafield[value]': str(value)}
@@ -92,7 +92,6 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-
 
     def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'variants.json?'
@@ -273,7 +272,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
