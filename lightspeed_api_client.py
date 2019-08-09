@@ -97,7 +97,6 @@ class LightspeedAPIClient:
         API_url = self.API_URL + 'products/' + str(id) + '/metafields/' + str(metafield_id) + '.json'
         payload = {'productMetafield[key]': str(key), 'productMetafield[value]': str(value)}
         response = requests.put(API_url, data=payload, auth=self.credentials)
-        print(response)
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
