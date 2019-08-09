@@ -92,6 +92,17 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
+    
+    def products_metafield_update(self, id, metafield_id, key, value):
+        API_url = self.API_URL + 'products/' + str(id) + '/metafields/' + str(metafield_id) + '.json'
+        payload = {'productMetafield[key]': str(key), 'productMetafield[value]': str(value)}
+        response = requests.put(API_url, data=payload, auth=self.credentials)
+        print(response)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
 
     def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'variants.json?'
