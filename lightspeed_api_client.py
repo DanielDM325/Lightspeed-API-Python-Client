@@ -53,6 +53,27 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
+    
+    def products_metafield_get(self, id, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
+        API_url = self.API_URL + 'products/' + str(id) + '/metafields.json?'
+        API_url = API_url + 'limit=' + str(limit) + '&'
+        API_url = API_url + 'page=' + str(page) + '&'
+        API_url = API_url + 'since_id' + str(since_id) + '&'
+        if created_at_min != '':
+            API_url = API_url + 'created_at_min=' + str(created_at_min) + '&'
+        if created_at_max != '':
+            API_url = API_url + 'created_at_max=' + str(created_at_max) + '&'
+        if updated_at_min != '':
+            API_url = API_url + 'updated_at_min=' + str(updated_at_min) + '&'
+        if updated_at_max != '':
+            API_url = API_url + 'updated_at_max=' + str(updated_at_max) + '&'
+        response = requests.get(API_url, auth=self.credentials)
+        #self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
 
     def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'variants.json?'
