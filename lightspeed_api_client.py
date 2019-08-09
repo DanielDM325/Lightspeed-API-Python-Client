@@ -68,7 +68,16 @@ class LightspeedAPIClient:
         if updated_at_max != '':
             API_url = API_url + 'updated_at_max=' + str(updated_at_max) + '&'
         response = requests.get(API_url, auth=self.credentials)
-        #self.update_status(response)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
+    def products_metafield_count(self, id):
+        API_url = self.API_URL + 'products/' + str(id) + '/metafields/count.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
