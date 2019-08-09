@@ -82,6 +82,16 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
+    
+    def products_metafield_create(self, id, key, value):
+        API_url = self.API_URL + 'products/' + str(id) + '/metafields.json'
+        payload = {'productMetafield[key]': str(key), 'productMetafield[value]': str(value)}
+        response = requests.post(API_url, data=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
 
 
     def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
@@ -216,7 +226,6 @@ class LightspeedAPIClient:
         if response.status_code == 201:
             return response.json()
         else:
-            print(response.status_code)
             return None
 
     def product_images_delete(self, id, product_image_id):
