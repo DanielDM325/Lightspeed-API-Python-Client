@@ -103,6 +103,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def products_metafield_delete(self, id, metafield_id):
+        API_url = self.API_URL + 'products/' + str(id) + '/metafields/' + str(metafield_id) + '.json'
+        response = requests.delete(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 204:
+            return response.text
+        else:
+            return None
+
     def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'variants.json?'
         if product != '':
