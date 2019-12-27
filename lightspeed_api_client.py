@@ -159,6 +159,53 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
+    
+    def variants_update(self, id, is_default='', sort_order='', article_code='', ean='', sku='', hs='', price_excl='', price_incl='', price_cost='', old_price_excl='', old_price_incl='', stock_tracking='', stock_level='', stock_alert='', stock_minimum='', stock_sold='', stock_buy_minimum='', stock_buy_maximum='', title=''):
+        API_url = self.API_URL + 'variants/' + str(id) + '.json?'
+        if is_default != '':
+            API_url = API_url + 'isDefault=' + str(is_default) + '&'
+        if sort_order != '':
+            API_url = API_url + 'sortOrder' + str(sort_order) + '&'
+        if article_code != '':
+            API_url = API_url + 'articleCode' + str(article_code) + '&'
+        if ean != '':
+            API_url = API_url + 'ean' + str(ean) + '&'
+        if sku != '':
+            API_url = API_url + 'sku' + str(sku) + '&'
+        if hs != '':
+            API_url = API_url + 'hs' + str(hs) + '&'
+        if price_excl != '':
+            API_url = API_url + 'priceExcl' + str(price_excl) + '&'
+        if price_incl != '':
+            API_url = API_url + 'priceIncl' + str(price_incl) + '&'
+        if price_cost != '':
+            API_url = API_url + 'priceCost' + str(price_cost) + '&'
+        if old_price_excl != '':
+            API_url = API_url + 'oldPriceExcl' + str(old_price_excl) + '&'
+        if old_price_incl != '':
+            API_url = API_url + 'oldPriceIncl' + str(old_price_incl) + '&'
+        if stock_tracking != '':
+            API_url = API_url + 'stockTracking' + str(stock_tracking) + '&'
+        if stock_level != '':
+            API_url = API_url + 'stockLevel' + str(stock_level) + '&'
+        if stock_alert != '':
+            API_url = API_url + 'strockAlert' + str(stock_alert) + '&'
+        if stock_minimum != '':
+            API_url = API_url + 'stockMinimum' + str(stock_minimum) + '&'
+        if stock_sold != '':
+            API_url = API_url + 'stockSold' + str(stock_sold) + '&'
+        if stock_buy_minimum != '':
+            API_url = API_url + 'stockBuyMinimum' + str(stock_buy_minimum) + '&'
+        if stock_buy_maximum != '':
+            API_url = API_url + 'stockBuyMaximum' + str(stock_buy_maximum) + '&'
+        if title != '':
+            API_url = API_url + 'title' + str(title) + '&'
+        response = requests.put(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
 
     def metafields_get(self, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'metafields.json?'
