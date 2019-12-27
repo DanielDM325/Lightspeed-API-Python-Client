@@ -123,7 +123,7 @@ class LightspeedAPIClient:
         if sku != '':
             API_url = API_url + 'sku=' + str(sku) + '&'
         if hs != '':
-            API_url = API_url + 'product=' + str(hs) + '&'
+            API_url = API_url + 'hs=' + str(hs) + '&'
         API_url = API_url + 'limit=' + str(limit) + '&'
         API_url = API_url + 'page=' + str(page) + '&'
         API_url = API_url + 'since_id=' + str(since_id) + '&'
