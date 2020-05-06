@@ -159,7 +159,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def variants_update(self, id, is_default='', sort_order='', article_code='', ean='', sku='', hs='', price_excl='', price_incl='', price_cost='', old_price_excl='', old_price_incl='', stock_tracking='', stock_level='', stock_alert='', stock_minimum='', stock_sold='', stock_buy_minimum='', stock_buy_maximum='', title=''):
         API_url = self.API_URL + 'variants/' + str(id) + '.json?'
         if is_default != '':
@@ -292,7 +292,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     """
     def product_images_create(self, id, image, image_path, image_name):
         API_url = self.API_URL + 'products/' + str(id) + '/images.json'
@@ -352,7 +352,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def webhook_get(self, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'webhooks.json'
         response = requests.get(API_url, auth=self.credentials)
@@ -361,7 +361,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def webhook_count(self):
         API_url = self.API_URL + 'webhooks/count.json'
         response = requests.get(API_url, auth=self.credentials)
@@ -370,7 +370,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def webhook_get_id(self, id):
         API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
@@ -379,7 +379,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def webhook_create(self, is_active, item_group, item_action, language='nl', _format='json', address):
         API_url = self.API_URL + 'webhooks.json'
         payload = {
@@ -394,9 +394,9 @@ class LightspeedAPIClient:
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
-        else
+        else:
             return None
-    
+
     def webhook_update(self, is_active, item_group, item_action, _format='json', address):
         API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
         payload = {
@@ -412,7 +412,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def webhook_delete(self, id):
         API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
