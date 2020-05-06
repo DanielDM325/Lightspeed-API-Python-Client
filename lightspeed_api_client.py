@@ -352,6 +352,75 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
+    
+    def webhook_get(self, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
+        API_url = self.API_URL + 'webhooks.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+    
+    def webhook_count(self):
+        API_url = self.API_URL + 'webhooks/count.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+    
+    def webhook_get_id(self, id):
+        API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+    
+    def webhook_create(self, is_active, item_group, item_action, language='nl', _format='json', address):
+        API_url = self.API_URL + 'webhooks.json'
+        payload = {
+            'isActive': is_active,
+            'itemGroup': item_group,
+            'itemAction': item_action,
+            'language': language,
+            'format': _format,
+            'address': address
+        }
+        response = requests.post(API_url, data=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else
+            return None
+    
+    def webhook_update(self, is_active, item_group, item_action, _format='json', address):
+        API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
+        payload = {
+            'isActive': is_active,
+            'itemGroup': item_group,
+            'itemAction': item_action,
+            'format': _format,
+            'address': address
+        }
+        response = requests.put(API_url, data=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+    
+    def webhook_delete(self, id):
+        API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
+        response = requests.delete(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
 
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
