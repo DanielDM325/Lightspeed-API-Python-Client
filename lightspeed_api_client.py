@@ -430,7 +430,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def category_image_post(self, id, attachment, file_name):
         API_url = self.API_URL + 'categories/' + str(id) + '/image.json'
         data = {
@@ -440,6 +440,14 @@ class LightspeedAPIClient:
         response = requests.post(API_url, data=data, auth=self.credentials)
         self.update_status(response)
         print(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
+    def category_get(self):
+        API_url = self.API_URL + 'categories.json'
+        response = requests.get(API_url, auth=self.credentials)
         if response.status_code == 200:
             return response.json()
         else:
