@@ -444,8 +444,10 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def category_get(self):
+    def category_get(self, parent):
         API_url = self.API_URL + 'categories.json?fields=id,title'
+        if parent:
+            API_url = API_url + '&parent=' + str(parent)
         response = requests.get(API_url, auth=self.credentials)
         if response.status_code == 200:
             return response.json()
