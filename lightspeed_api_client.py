@@ -449,6 +449,7 @@ class LightspeedAPIClient:
         if parent:
             API_url = API_url + '&parent=' + str(parent)
         response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -457,6 +458,7 @@ class LightspeedAPIClient:
     def category_get_id(self, id):
         API_url = self.API_URL + 'categories/' + str(id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
@@ -465,6 +467,7 @@ class LightspeedAPIClient:
     def category_count(self):
         API_url = self.API_URL + 'categories/count.json'
         response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
         if response.status_code == 200:
             return response.json()
         else:
