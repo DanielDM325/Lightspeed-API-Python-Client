@@ -500,6 +500,20 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def redirect_create(self, is_parmanent, url, target):
+        API_url = self.API_URL + 'redirects.json'
+        data = {
+            'redirect[isPermanent]': is_parmanent,
+            'redirect[url]': url,
+            'redirect[target]': target
+        }
+        response = requests.get(API_url, data=data, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
