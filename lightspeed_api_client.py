@@ -421,7 +421,7 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
-    
+
     def category_image_get(self, id):
         API_url = self.API_URL + 'categories/' + str(id) + '/image.json'
         response = requests.get(API_url, auth=self.credentials)
@@ -508,7 +508,6 @@ class LightspeedAPIClient:
             'redirect[target]': target
         }
         response = requests.post(API_url, data=data, auth=self.credentials)
-        print(response.status_code)
         self.update_status(response)
         if response.status_code == 201:
             return response.json()
@@ -530,11 +529,10 @@ class LightspeedAPIClient:
             API_url = API_url + 'updated_at_max=' + updated_at_max
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
-        print(response.status_code)
         if response.status_code == 200:
             return response.json()
         else:
-            return None        
+            return None
 
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
