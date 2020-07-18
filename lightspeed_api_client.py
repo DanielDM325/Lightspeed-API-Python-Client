@@ -482,7 +482,7 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def redirect_count(self)
+    def redirect_count(self):
         API_url = self.API_URL + 'redirects/count.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
@@ -491,8 +491,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def redirect_get_id(self, id)
-        API_url = self.API_URL + 'redirects/' + str(id) '.json'
+    def redirect_get_id(self, id):
+        API_url = self.API_URL + 'redirects/' + str(id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -500,16 +500,17 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def redirect_create(self, is_parmanent, url, target):
+    def redirect_create(self, is_permanent, url, target):
         API_url = self.API_URL + 'redirects.json'
         data = {
-            'redirect[isPermanent]': is_parmanent,
+            'redirect[isPermanent]': is_permanent,
             'redirect[url]': url,
             'redirect[target]': target
         }
-        response = requests.get(API_url, data=data, auth=self.credentials)
+        response = requests.post(API_url, data=data, auth=self.credentials)
+        print(response.status_code)
         self.update_status(response)
-        if response.status_code == 200:
+        if response.status_code == 201:
             return response.json()
         else:
             return None
