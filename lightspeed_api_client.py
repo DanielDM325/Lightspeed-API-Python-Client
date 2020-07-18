@@ -392,7 +392,7 @@ class LightspeedAPIClient:
         }
         response = requests.post(API_url, data=payload, auth=self.credentials)
         self.update_status(response)
-        if response.status_code == 200:
+        if response.status_code == 201:
             return response.json()
         else:
             return None
