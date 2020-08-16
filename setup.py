@@ -12,6 +12,10 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://nodedevelopment.net/",
+    project_url={
+        'Documentation': 'https://github.com/DanielDM325/Lightspeed-API-Python-Client/wiki',
+        'Source': 'https://github.com/DanielDM325/Lightspeed-API-Python-Client'
+    },
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
@@ -26,4 +30,6 @@ setuptools.setup(
         "Topic :: Software Development :: Build Tools"
     ],
     python_requires='>=3.5',
+    license='None',
+    install_requires=['requests']
 )

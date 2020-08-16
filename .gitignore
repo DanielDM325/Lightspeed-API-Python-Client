@@ -1,4 +1,6 @@
-
+build/
+dist/
+lightspeed_api_client_dmizrahi.egg-info/
 *.pyc
 test.py
 *.jpg
