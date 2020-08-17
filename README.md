@@ -4,34 +4,32 @@
 
 The Lightspeed API Python Client is a wrapper developed to interface with the REST API provided by the Lightspeed platform. It greatly helps to develop applications using Python code instead of PHP (using the official library) or calling numerous url's using cURL. To get a complete view of all available calls visit their [API documentation page](https://developers.lightspeedhq.com/ecom/introduction/introduction/).
 
-## Getting Started
+## Getting started
 
-### Token Creation
-Start out by creating an API token in the back office. This token will grant access to the API and define which rights a certain token might have or not have: read, write and delete.
+### Authentication and API key
+In order to use this library one must first obtain an API key and API secret from lightspeed. Contact the [Customer Service](https://ecom-support.lightspeedhq.com/hc/en-us/articles/360000593913-Contact-us) department of Lightspeed. API keys and secrets can only be supplied to shop owners. To read more about authentication read the [official documentation](https://developers.lightspeedhq.com/ecom/introduction/authentication/).
 
-```
-Back Office &rarr; Configuratie &rarr; Api &rarr; Add new token by providing a description and rights
-```
+Keep the API key and secret safe. If it ends up in malicous hands they will be able to abuse it. The API key and secret will be used to create an API client object in this library.
 
-Keep the token safe. If it ends up in malicous hands they will be able to abuse it. The token will be used when creating an API client object.
+### Requirements
+This package requires atleast python 3.5 to work. It will install the requests package in addition.
 
 ### Installing
-
 Use the package manager pip to install this package.
-```bash
-pip install shoptrader_api_client
+```
+pip install https://nodedevelopment.net/python-packages/lightspeed-api-client/lightspeed_api_client_dmizrahi-0.1.0-py3-none-any.whl
 ```
 
 ## Usage
 
 ## Support
-Need help developing an appliction? We at Node Development and Shoptrader can help you automate all kinds of functionality. Synchronizing products with an external database, keeping tab on your stock or importing orders into your accounting suite.
+Need help developing an appliction? We at Node Development can help you automate all kinds of functionality. Synchronizing products with an external database, keeping tab on your stock or importing orders into your accounting suite.
 
 ## Authors
 This package is developed by Daniel Mizrahi from Node Development
 [dmizrahi@nodedevelopment.net](mailto:dmizrahi@nodedevelopment.net)
 [www.nodedevelopment.net](https://nodedevelopment.net)
 
-Of course none of this would be possible without the help of Shoptrader.
+Of course none of this would be possible without the help of Lightspeed.
 
 ## License
