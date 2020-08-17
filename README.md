@@ -26,8 +26,8 @@ pip install https://nodedevelopment.net/python-packages/lightspeed-api-client/li
 Need help developing an appliction? We at Node Development can help you automate all kinds of functionality. Synchronizing products with an external database, keeping tab on your stock or importing orders into your accounting suite.
 
 ## Authors
-This package is developed by Daniel Mizrahi from Node Development
-[dmizrahi@nodedevelopment.net](mailto:dmizrahi@nodedevelopment.net)
+This package is developed by Daniel Mizrahi from Node Development.\
+[dmizrahi@nodedevelopment.net](mailto:dmizrahi@nodedevelopment.net)\
 [www.nodedevelopment.net](https://nodedevelopment.net)
 
 Of course none of this would be possible without the help of Lightspeed.
