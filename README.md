@@ -12,7 +12,7 @@ In order to use this library one must first obtain an API key and API secret fro
 Keep the API key and secret safe. If it ends up in malicous hands they will be able to abuse it. The API key and secret will be used to create an API client object in this library.
 
 ### Requirements
-This package requires atleast python 3.5 to work. It will install the requests package in addition.
+This package requires atleast Python 3.5 to work. It will install the [requests](https://pypi.org/project/requests/) package in addition.
 
 ### Installing
 Use the package manager pip to install this package.
