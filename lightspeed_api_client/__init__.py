@@ -444,6 +444,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def category_image_delete():
+        API_url = self.API_URL + 'categories/' + str(id) + '/image.json'
+        response = requests.delete(API_URL, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 204:
+            return response.json()
+        else:
+            return None
+
     def category_get(self, parent):
         API_url = self.API_URL + 'categories.json?fields=id,title'
         if parent:
