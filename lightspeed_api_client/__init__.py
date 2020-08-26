@@ -45,8 +45,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_get_id(self, id):
-        API_url = self.API_URL + 'products/' + str(id) + '.json'
+    def products_get_id(self, product_id):
+        API_url = self.API_URL + 'products/' + str(product_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -64,8 +64,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_metafield_get(self, id, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
-        API_url = self.API_URL + 'products/' + str(id) + '/metafields.json?'
+    def products_metafield_get(self, metafield_id, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
+        API_url = self.API_URL + 'products/' + str(metafield_id) + '/metafields.json?'
         API_url = API_url + 'limit=' + str(limit) + '&'
         API_url = API_url + 'page=' + str(page) + '&'
         API_url = API_url + 'since_id' + str(since_id) + '&'
@@ -84,8 +84,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_metafield_count(self, id):
-        API_url = self.API_URL + 'products/' + str(id) + '/metafields/count.json'
+    def products_metafield_count(self, product_id):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/metafields/count.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -93,8 +93,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_metafield_create(self, id, key, value):
-        API_url = self.API_URL + 'products/' + str(id) + '/metafields.json'
+    def products_metafield_create(self, product_id, key, value):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/metafields.json'
         payload = {'productMetafield[key]': str(key), 'productMetafield[value]': str(value)}
         response = requests.post(API_url, data=payload, auth=self.credentials)
         self.update_status(response)
@@ -103,8 +103,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_metafield_update(self, id, metafield_id, key, value):
-        API_url = self.API_URL + 'products/' + str(id) + '/metafields/' + str(metafield_id) + '.json'
+    def products_metafield_update(self, product_id, metafield_id, key, value):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/metafields/' + str(metafield_id) + '.json'
         payload = {'productMetafield[key]': str(key), 'productMetafield[value]': str(value)}
         response = requests.put(API_url, data=payload, auth=self.credentials)
         self.update_status(response)
@@ -113,8 +113,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_metafield_delete(self, id, metafield_id):
-        API_url = self.API_URL + 'products/' + str(id) + '/metafields/' + str(metafield_id) + '.json'
+    def products_metafield_delete(self, product_id, metafield_id):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/metafields/' + str(metafield_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 204:
@@ -130,7 +130,7 @@ class LightspeedAPIClient:
             API_url = API_url + 'article_code=' + str(article_code) + '&'
         if ean != '':
             API_url = API_url + 'ean=' + str(ean) + '&'
-        if sku != '':
+        if sku:
             API_url = API_url + 'sku=' + str(sku) + '&'
         if hs != '':
             API_url = API_url + 'hs=' + str(hs) + '&'
@@ -161,8 +161,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def variants_get_id(self, id):
-        API_url = self.API_URL + 'variants/' + str(id) + '.json'
+    def variants_get_id(self, variants_id):
+        API_url = self.API_URL + 'variants/' + str(variants_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -170,8 +170,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def variants_update(self, id, is_default='', sort_order='', article_code='', ean='', sku='', hs='', price_excl='', price_incl='', price_cost='', old_price_excl='', old_price_incl='', stock_tracking='', stock_level='', stock_alert='', stock_minimum='', stock_sold='', stock_buy_minimum='', stock_buy_maximum='', title=''):
-        API_url = self.API_URL + 'variants/' + str(id) + '.json?'
+    def variants_update(self, variants_id, is_default='', sort_order='', article_code='', ean='', sku='', hs='', price_excl='', price_incl='', price_cost='', old_price_excl='', old_price_incl='', stock_tracking='', stock_level='', stock_alert='', stock_minimum='', stock_sold='', stock_buy_minimum='', stock_buy_maximum='', title=''):
+        API_url = self.API_URL + 'variants/' + str(variants_id) + '.json?'
         if is_default != '':
             API_url = API_url + 'isDefault=' + str(is_default) + '&'
         if sort_order != '':
@@ -246,8 +246,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def metafields_get_id(self, id):
-        API_url = self.API_URL + 'metafields/' + str(id) + '.json'
+    def metafields_get_id(self, metafield_id):
+        API_url = self.API_URL + 'metafields/' + str(metafield_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -284,8 +284,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def product_images_get(self, id):
-        API_url = self.API_URL + 'products/' + str(id) + '/images.json'
+    def product_images_get(self, product_id):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/images.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -293,8 +293,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def product_images_create(self, id, image, file_name):
-        API_url = self.API_URL + 'products/' + str(id) + '/images.json'
+    def product_images_create(self, product_id, image, file_name):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/images.json'
         payload = {'productImage[attachment]': image, 'productImage[filename]': file_name}
         response = requests.post(API_url, data=payload, auth=self.credentials)
         self.update_status(response)
@@ -317,8 +317,8 @@ class LightspeedAPIClient:
             return None
     """
 
-    def product_images_delete(self, id, product_image_id):
-        API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
+    def product_images_delete(self, product_id, product_image_id):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/images/' + str(product_image_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 204:
@@ -326,8 +326,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def product_images_update(self, id, product_image_id, sorting_order):
-        API_url = self.API_URL + 'products/' + str(id) + '/images/' + str(product_image_id) + '.json'
+    def product_images_update(self, product_id, product_image_id, sorting_order):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/images/' + str(product_image_id) + '.json'
         payload = {'productImage[sortOrder]': str(sorting_order)}
         response = requests.put(API_url, data=payload, auth=self.credentials)
         self.update_status(response)
@@ -354,8 +354,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def categories_product_get_id(self, id):
-        API_url = self.API_URL + 'categories/products/' + str(id) + '.json'
+    def categories_product_get_id(self, category_id):
+        API_url = self.API_URL + 'categories/products/' + str(category_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -381,8 +381,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def webhook_get_id(self, id):
-        API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
+    def webhook_get_id(self, webhook_id):
+        API_url = self.API_URL + 'webhooks/' + str(webhook_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -407,8 +407,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def webhook_update(self, is_active, item_group, item_action, address, _format='json'):
-        API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
+    def webhook_update(self, webhook_id, is_active, item_group, item_action, address, _format='json'):
+        API_url = self.API_URL + 'webhooks/' + str(webhook_id) + '.json'
         payload = {
             'isActive': is_active,
             'itemGroup': item_group,
@@ -423,8 +423,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def webhook_delete(self, id):
-        API_url = self.API_URL + 'webhooks/' + str(id) + '.json'
+    def webhook_delete(self, webhook_id):
+        API_url = self.API_URL + 'webhooks/' + str(webhook_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -432,8 +432,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def category_image_get(self, id):
-        API_url = self.API_URL + 'categories/' + str(id) + '/image.json'
+    def category_image_get(self, category_id):
+        API_url = self.API_URL + 'categories/' + str(category_id) + '/image.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -441,8 +441,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def category_image_post(self, id, attachment, file_name):
-        API_url = self.API_URL + 'categories/' + str(id) + '/image.json'
+    def category_image_post(self, category_id, attachment, file_name):
+        API_url = self.API_URL + 'categories/' + str(category_id) + '/image.json'
         data = {
             'categoryImage[attachment]': attachment,
             'categoryImage[filename]': file_name,
@@ -454,8 +454,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def category_image_delete(self, id):
-        API_url = self.API_URL + 'categories/' + str(id) + '/image.json'
+    def category_image_delete(self, category_id):
+        API_url = self.API_URL + 'categories/' + str(category_id) + '/image.json'
         response = requests.delete(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 204:
@@ -474,8 +474,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def category_get_id(self, id):
-        API_url = self.API_URL + 'categories/' + str(id) + '.json'
+    def category_get_id(self, category_id):
+        API_url = self.API_URL + 'categories/' + str(category_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
@@ -510,8 +510,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def redirect_get_id(self, id):
-        API_url = self.API_URL + 'redirects/' + str(id) + '.json'
+    def redirect_get_id(self, redirect_id):
+        API_url = self.API_URL + 'redirects/' + str(redirect_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
