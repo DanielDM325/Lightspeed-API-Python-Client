@@ -561,21 +561,21 @@ class LightspeedAPIClient:
     def sleep_reset(self):
         if self.rate_limit_remaining[0] == '-1':
             print("Waiting for reset")
-            for t in reversed(range(1, int(self.rate_limit_reset[0]) + 1)):
+            for t in reversed(range(1, int(self.rate_limit_reset[0]) + 2)):
                 print(t, end="\r")
                 time.sleep(1)
             print(0, end="\r")
             print("Restarting requests")
         elif self.rate_limit_remaining[1] == '-1':
             print("Waiting for reset")
-            for t in reversed(range(1, int(self.rate_limit_reset[1]) + 1)):
+            for t in reversed(range(1, int(self.rate_limit_reset[1]) + 2)):
                 print(t, end="\r")
                 time.sleep(1)
             print(0, end="\r")
             print("Restarting requests")
         elif self.rate_limit_remaining[2] == '-1':
             print("Waiting for reset")
-            for t in reversed(range(1, int(self.rate_limit_reset[2]) + 1)):
+            for t in reversed(range(1, int(self.rate_limit_reset[2]) + 2)):
                 print(t, end="\r")
                 time.sleep(1)
             print(0, end="\r")
