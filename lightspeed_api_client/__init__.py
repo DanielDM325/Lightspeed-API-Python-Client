@@ -558,7 +558,7 @@ class LightspeedAPIClient:
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
         self.status_code = response.status_code
 
-    def sleep_reset(self, verbose):
+    def sleep_reset(self, verbose=False):
         if self.rate_limit_remaining[0] == '-1':
             if verbose:
                 print("Waiting for reset")
