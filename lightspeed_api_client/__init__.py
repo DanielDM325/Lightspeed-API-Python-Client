@@ -558,28 +558,37 @@ class LightspeedAPIClient:
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
         self.status_code = response.status_code
 
-    def sleep_reset(self):
+    def sleep_reset(self, verbose):
         if self.rate_limit_remaining[0] == '-1':
-            print("Waiting for reset")
+            if verbose:
+                print("Waiting for reset")
             for t in reversed(range(1, int(self.rate_limit_reset[0]) + 2)):
-                print(t, end="\r")
+                if verbose:
+                    print(t, end="\r")
                 time.sleep(1)
-            print(0, end="\r")
-            print("Restarting requests")
+            if verbose:
+                print(0, end="\r")
+                print("Restarting requests")
         elif self.rate_limit_remaining[1] == '-1':
-            print("Waiting for reset")
+            if verbose:
+                print("Waiting for reset")
             for t in reversed(range(1, int(self.rate_limit_reset[1]) + 2)):
-                print(t, end="\r")
+                if verbose:
+                    print(t, end="\r")
                 time.sleep(1)
-            print(0, end="\r")
-            print("Restarting requests")
+            if verbose:
+                print(0, end="\r")
+                print("Restarting requests")
         elif self.rate_limit_remaining[2] == '-1':
-            print("Waiting for reset")
+            if verbose:
+                print("Waiting for reset")
             for t in reversed(range(1, int(self.rate_limit_reset[2]) + 2)):
-                print(t, end="\r")
+                if verbose:
+                    print(t, end="\r")
                 time.sleep(1)
-            print(0, end="\r")
-            print("Restarting requests")
+            if verbose:
+                print(0, end="\r")
+                print("Restarting requests")
 
 
 def number_of_pages(number_of_items, page_size=50):
