@@ -553,6 +553,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def suppliers_count(self):
+        API_url = self.API_URL + 'metafields/count.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json
+        else:
+            return None
+
     def order_get(self, number=None, page=1, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None):
         API_url = self.API_URL + 'orders.json?'
         if number:
