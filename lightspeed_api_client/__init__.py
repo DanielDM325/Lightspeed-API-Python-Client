@@ -59,7 +59,7 @@ class LightspeedAPIClient:
         payload = {'product[content]': content}
         response = requests.put(API_url, data=payload, auth=self.credentials)
         self.update_status(response)
-        if response.status_code == 201:
+        if response.status_code == 200:
             return response.json()
         else:
             return None
