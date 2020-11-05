@@ -82,6 +82,16 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def products_attribute_update(self, product_id, product_attribute_id, value):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/attributes/' + str(product_attribute_id) + '.json'
+        payload = {'productAttribute[value]': str(value)}
+        response = requests.put(API_url, data=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def products_metafield_get(self, metafield_id, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'products/' + str(metafield_id) + '/metafields.json?'
         API_url = API_url + 'limit=' + str(limit) + '&'
