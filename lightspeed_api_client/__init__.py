@@ -54,9 +54,21 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_update(self, product_id, content):
+    def products_update(self, product_id, data01=None, content=None, title=None, full_title=None, brand=None, supplier=None):
         API_url = self.API_URL + 'products/' + str(product_id) + '.json'
-        payload = {'product[content]': content}
+        payload = dict()
+        if data01:
+            payload['product[data01]'] = data01
+        if content:
+            payload['product[content]'] = content
+        if title:
+            payload['product[title]'] = title
+        if full_title:
+            payload['product[fulltitle]'] = full_title
+        if brand:
+            payload['product[brand]'] = brand
+        if supplier:
+            payload['product[supplier]'] = supplier
         response = requests.put(API_url, data=payload, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
