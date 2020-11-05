@@ -563,7 +563,7 @@ class LightspeedAPIClient:
             return None
 
     def suppliers_get(self, limit=50, page=1):
-        API_url = self.API_URL + 'suppliers.json'
+        API_url = self.API_URL + 'suppliers.json?'
         API_url = API_url + 'limit=' + str(limit) + '&'
         API_url = API_url + 'page=' + str(page)
         response = requests.get(API_url, auth=self.credentials)
