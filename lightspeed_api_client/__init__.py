@@ -390,7 +390,7 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def webhook_create(self, is_active, item_group, item_action,  address, language='nl', _format='json'):
+    def webhook_create(self, is_active, item_group, item_action, address, language='nl', _format='json'):
         API_url = self.API_URL + 'webhooks.json'
         payload = {
             'isActive': is_active,
