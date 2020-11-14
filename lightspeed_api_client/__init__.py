@@ -54,6 +54,41 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def products_create(self, visibility=None, data01=None, data02=None, data03=None, title=None, full_title=None, description=None, content=None, brand=None, delivery_date=None,
+                        supplier=None):
+        payload = dict()
+        if visibility is not None:
+            if visibility:
+                payload['product[visibility]'] = 'visible'
+            else:
+                payload['product[visibility]'] = 'hidden'
+        if data01:
+            payload['product[data01]'] = str(data01)
+        if data02:
+            payload['product[data02]'] = str(data02)
+        if data03:
+            payload['product[data03]'] = str(data03)
+        if title:
+            payload['product[title]'] = title
+        if full_title:
+            payload['product[fulltitle]'] = full_title
+        if description:
+            payload['product[description]'] = description
+        if content:
+            payload['product[content]'] = content
+        if brand:
+            payload['product[brand]'] = brand
+        if delivery_date:
+            payload['product[deliverydate]'] = delivery_date
+        if supplier:
+            payload['product[supplier]'] = supplier
+        response = requests.post(API_url, data=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def products_update(self, product_id, data01=None, content=None, title=None, full_title=None, brand=None, supplier=None):
         API_url = self.API_URL + 'products/' + str(product_id) + '.json'
         payload = dict()
