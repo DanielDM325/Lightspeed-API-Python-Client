@@ -272,6 +272,44 @@ class LightspeedAPIClient:
         API_url = API_url + 'page=' + str(page) + '&'
         API_url = API_url + 'since_id=' + str(since_id) + '&'
         if created_at_min != '':
+    def variants_create(self, is_default=True, article_code='', ean='', sku='', price_excl=0, price_incl=0, price_cost=0, stock_tracking='disabled', stock_level=100, stock_alert=0,
+                        stock_minimum=0, stock_sold=0, stock_buy_minimum=1, stock_buy_maximum=10000, weight=0, volume=0, colli=1, size_X=0, size_Y=0, size_Z=0,
+                        title='Default', tax_id=None, product_id=None):
+        API_url = self.API_URL + 'variants.json'
+        payload = {
+            'variant': {
+                'isdefault': is_default,
+                'articleCode': article_code,
+                'ean': ean,
+                'sku': sku,
+                'priceExcl': price_excl,
+                'priceIncl': price_incl,
+                'priceCost': price_cost,
+                'stockTracking': stock_tracking,
+                'stockLevel': stock_level,
+                'stockAlert': stock_alert,
+                'stockMinimum': stock_minimum,
+                'stockSold': stock_sold,
+                'stockBuyMinimum': stock_buy_minimum,
+                'stockByMaximum': stock_buy_maximum,
+                'weight': weight,
+                'volume': volume,
+                'colli': colli,
+                'sizeX': size_X,
+                'sizeY': size_Y,
+                'sizeZ': size_Z,
+                'title': title,
+                'tax': tax_id,
+                'product': product_id
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
             API_url = API_url + 'created_at_min=' + str(created_at_min) + '&'
         if created_at_max != '':
             API_url = API_url + 'created_at_max=' + str(created_at_max) + '&'
