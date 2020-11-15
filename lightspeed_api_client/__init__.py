@@ -413,8 +413,13 @@ class LightspeedAPIClient:
 
     def product_images_create(self, product_id, image, file_name):
         API_url = self.API_URL + 'products/' + str(product_id) + '/images.json'
-        payload = {'productImage[attachment]': image, 'productImage[filename]': file_name}
-        response = requests.post(API_url, data=payload, auth=self.credentials)
+        payload = {
+            'productImage': {
+                'attachment': image,
+                'filename': file_name
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 201:
             return response.json()
