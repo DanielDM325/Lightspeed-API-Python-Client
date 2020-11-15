@@ -54,37 +54,27 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_create(self, visibility=None, data01=None, data02=None, data03=None, title=None, full_title=None, description=None, content=None, brand=None, delivery_date=None,
-                        supplier=None):
-        payload = dict()
-        if visibility is not None:
-            if visibility:
-                payload['product[visibility]'] = 'visible'
-            else:
-                payload['product[visibility]'] = 'hidden'
-        if data01:
-            payload['product[data01]'] = str(data01)
-        if data02:
-            payload['product[data02]'] = str(data02)
-        if data03:
-            payload['product[data03]'] = str(data03)
-        if title:
-            payload['product[title]'] = title
-        if full_title:
-            payload['product[fulltitle]'] = full_title
-        if description:
-            payload['product[description]'] = description
-        if content:
-            payload['product[content]'] = content
-        if brand:
-            payload['product[brand]'] = brand
-        if delivery_date:
-            payload['product[deliverydate]'] = delivery_date
-        if supplier:
-            payload['product[supplier]'] = supplier
-        response = requests.post(API_url, data=payload, auth=self.credentials)
+    def products_create(self, visibility='hidden', data_01='', data_02='', data_03='', title='', full_title='', description='', content='', brand_id=None,
+                        supplier_id=None, delivery_date_id=None):
+        API_url = self.API_URL + 'products.json'
+        payload = {
+            'product': {
+                'visibiliy': visibility,
+                'data01': str(data_01),
+                'data02': str(data_02),
+                'data03': str(data_03),
+                'title': title,
+                'fulltitle': full_title,
+                'description': description,
+                'content': content,
+                'brand': brand_id,
+                'supplier': supplier_id,
+                'deliverydate': delivery_date_id
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
         self.update_status(response)
-        if response.status_code == 200:
+        if response.status_code == 201:
             return response.json()
         else:
             return None
