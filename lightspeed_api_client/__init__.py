@@ -244,53 +244,6 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def variants_update(self, variants_id, is_default='', sort_order='', article_code='', ean='', sku='', hs='', price_excl='', price_incl='', price_cost='', old_price_excl='', old_price_incl='', stock_tracking='', stock_level='', stock_alert='', stock_minimum='', stock_sold='', stock_buy_minimum='', stock_buy_maximum='', title=''):
-        API_url = self.API_URL + 'variants/' + str(variants_id) + '.json?'
-        if is_default != '':
-            API_url = API_url + 'isDefault=' + str(is_default) + '&'
-        if sort_order != '':
-            API_url = API_url + 'sortOrder' + str(sort_order) + '&'
-        if article_code != '':
-            API_url = API_url + 'articleCode' + str(article_code) + '&'
-        if ean != '':
-            API_url = API_url + 'ean' + str(ean) + '&'
-        if sku != '':
-            API_url = API_url + 'sku' + str(sku) + '&'
-        if hs != '':
-            API_url = API_url + 'hs' + str(hs) + '&'
-        if price_excl != '':
-            API_url = API_url + 'priceExcl' + str(price_excl) + '&'
-        if price_incl != '':
-            API_url = API_url + 'priceIncl' + str(price_incl) + '&'
-        if price_cost != '':
-            API_url = API_url + 'priceCost' + str(price_cost) + '&'
-        if old_price_excl != '':
-            API_url = API_url + 'oldPriceExcl' + str(old_price_excl) + '&'
-        if old_price_incl != '':
-            API_url = API_url + 'oldPriceIncl' + str(old_price_incl) + '&'
-        if stock_tracking != '':
-            API_url = API_url + 'stockTracking' + str(stock_tracking) + '&'
-        if stock_level != '':
-            API_url = API_url + 'stockLevel' + str(stock_level) + '&'
-        if stock_alert != '':
-            API_url = API_url + 'strockAlert' + str(stock_alert) + '&'
-        if stock_minimum != '':
-            API_url = API_url + 'stockMinimum' + str(stock_minimum) + '&'
-        if stock_sold != '':
-            API_url = API_url + 'stockSold' + str(stock_sold) + '&'
-        if stock_buy_minimum != '':
-            API_url = API_url + 'stockBuyMinimum' + str(stock_buy_minimum) + '&'
-        if stock_buy_maximum != '':
-            API_url = API_url + 'stockBuyMaximum' + str(stock_buy_maximum) + '&'
-        if title != '':
-            API_url = API_url + 'title' + str(title) + '&'
-        response = requests.put(API_url, auth=self.credentials)
-        self.update_status(response)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            return None
-
     def metafields_get(self, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
         API_url = self.API_URL + 'metafields.json?'
         API_url = API_url + 'limit=' + str(limit) + '&'
@@ -300,6 +253,46 @@ class LightspeedAPIClient:
     def variants_create(self, is_default=True, article_code='', ean='', sku='', price_excl=0, price_incl=0, price_cost=0, stock_tracking='disabled', stock_level=100, stock_alert=0,
                         stock_minimum=0, stock_sold=0, stock_buy_minimum=1, stock_buy_maximum=10000, weight=0, volume=0, colli=1, size_X=0, size_Y=0, size_Z=0,
                         title='Default', tax_id=None, product_id=None):
+    def variants_update(self, variant_id, is_default=None, sort_order=None, article_code=None, ean=None, sku=None, hs=None, price_excl=None, price_incl=None, price_cost=None,
+                        old_price_excl=None, old_price_incl=None, stock_tracking=None, stock_level=None, stock_alert=None, stock_minimum=None, stock_sold=None,
+                        stock_buy_minimum=None, stock_buy_maximum=None, weight=None, volume=None, colli=None, size_X=None, size_Y=None, size_Z=None, title=None, tax_id=None):
+        API_url = self.API_URL + 'variants/' + str(variant_id) + '.json?'
+        payload = {
+            'variant': {
+                'isDefault': is_default,
+                'sortOrder': sort_order,
+                'articleCode': article_code,
+                'ean': ean,
+                'sku': sku,
+                'hs': hs,
+                'priceExcl': price_excl,
+                'priceIncl': price_incl,
+                'priceCost': price_cost,
+                'oldPriceExcl': old_price_excl,
+                'oldPriceIncl': old_price_incl,
+                'stockTracking': stock_tracking,
+                'stockLevel': stock_level,
+                'stockMinimum': stock_minimum,
+                'stockSold': stock_sold,
+                'stockBuyMinimum': stock_buy_minimum,
+                'stockBuyMaximum': stock_buy_maximum,
+                'weight': weight,
+                'volume': volume,
+                'colli': colli,
+                'sizeX': size_X,
+                'sizeY': size_Y,
+                'sizeZ': size_Z,
+                'title': title,
+                'tax': tax_id,
+            }
+        }
+        response = requests.put(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
         API_url = self.API_URL + 'variants.json'
         payload = {
             'variant': {
