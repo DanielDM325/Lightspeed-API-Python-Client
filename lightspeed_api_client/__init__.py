@@ -235,8 +235,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def variants_get_id(self, variants_id):
-        API_url = self.API_URL + 'variants/' + str(variants_id) + '.json'
+    def variants_get_id(self, variant_id):
+        API_url = self.API_URL + 'variants/' + str(variant_id) + '.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
