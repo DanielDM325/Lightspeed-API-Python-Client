@@ -487,6 +487,22 @@ class LightspeedAPIClient:
             return None
 
     def webhook_get(self, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
+    def categories_product_create_bulk(self, product_id, category_ids):
+        API_url = self.API_URL + 'categories/products/bulk.json'
+        payload = {
+            'categoriesProduct': {
+                'categories': category_ids,
+                'product': product_id
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
+    def webhook_get(self, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None):
         API_url = self.API_URL + 'webhooks.json'
         response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
