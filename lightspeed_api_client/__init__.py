@@ -615,6 +615,25 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def category_create(self, parent, title, full_title, is_visible=True, _type='category', description='', content=''):
+        API_url = self.API_URL + 'categories.json'
+        payload = {
+            'category': {
+                'parent': parent,
+                'type': _type,
+                'title': title,
+                'full_title': full_title,
+                'description': description,
+                'content': content
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
     def redirect_get(self):
         API_url = self.API_URL + 'redirects.json'
         response = requests.get(API_url, auth=self.credentials)
