@@ -579,11 +579,13 @@ class LightspeedAPIClient:
 
     def category_image_post(self, category_id, attachment, file_name):
         API_url = self.API_URL + 'categories/' + str(category_id) + '/image.json'
-        data = {
-            'categoryImage[attachment]': attachment,
-            'categoryImage[filename]': file_name,
+        payload = {
+            'categoryImage': {
+                'attachment': attachment,
+                'filename': file_name
+            }
         }
-        response = requests.post(API_url, data=data, auth=self.credentials)
+        response = requests.post(API_url, json=payload, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 201:
             return response.json()
