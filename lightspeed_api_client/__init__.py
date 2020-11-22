@@ -772,6 +772,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def customers_get_id(self, customer_id):
+        API_url = self.API_URL + 'customers/' + str(customer_id) + '.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def customers_delete(self, customer_id):
         API_url = self.API_URL + 'customers/' + str(customer_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
