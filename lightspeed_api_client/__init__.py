@@ -790,6 +790,63 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def customers_create(self, e_mail, first_name, last_name, is_confirmed=True, referral_id='', gender='', birth_date='', national_id='', password='', middle_name='',
+                         phone='', mobile='', is_company=False, company_name='', company_coc_number='', company_vat_number='', address_billing_name='', address_billing_street='',
+                         address_billing_street_2='', address_billing_number='', address_billing_extenion='', address_billing_zip_code='', address_billing_city='',
+                         address_billing_region='', address_billing_country='nl', address_shipping_company='', address_shipping_name='', address_shipping_street='',
+                         address_shipping_street_2='', address_shipping_number='', address_shipping_extension='', address_shipping_zip_code='', address_shipping_city='',
+                         address_shipping_region='', address_shipping_country='nl', memo='', do_notify_registered=False, do_notify_confirmed=False, do_notify_password=False):
+        API_url = self.API_URL + 'customers.json'
+        payload = {
+            'customer': {
+                'isConfirmed': is_confirmed,
+                'referralId': referral_id,
+                'gender': gender,
+                'birthDate': birth_date,
+                'nationalId': str(national_id),
+                'email': e_mail,
+                'password': ''.join((random.choice(string.ascii_letters + string.digits) for i in range(password))) if type(password) is int else password,
+                'firstname': first_name,
+                'middlename': middle_name,
+                'lastname': last_name,
+                'phone': phone,
+                'mobile': mobile,
+                'isCompany': is_company,
+                'companyName': company_name,
+                'companyCoCNumber': str(company_coc_number),
+                'companyVatNumber': str(company_vat_number),
+                'addressBillingName': address_billing_name,
+                'addressBillingStreet': address_billing_street,
+                'addressBillingStreet2': address_billing_street_2,
+                'addressBillingNumber': str(address_billing_number),
+                'addressBillingExtension': str(address_billing_extenion),
+                'addressBillingZipcode': address_billing_zip_code,
+                'addressBillingCity': address_billing_city,
+                'addressBillingRegion': address_billing_region,
+                'addressBillingCountry': address_billing_country,
+                'addressShippingCompany': address_shipping_company,
+                'addressShippingName': address_shipping_name,
+                'addressShippingStreet': address_shipping_street,
+                'addressShippingstreet2': address_shipping_street_2,
+                'addressShippingNumber': str(address_shipping_number),
+                'addressShippingExtension': str(address_shipping_extension),
+                'addressShippingZipcode': address_shipping_zip_code,
+                'addressShippingCity': address_shipping_city,
+                'addressShippingRegion': address_shipping_region,
+                'addressShippingCountry': address_shipping_country,
+                'memo': memo,
+                'doNotifyRegistered': do_notify_registered,
+                'doNotifyConfirmed': do_notify_confirmed,
+                'doNotifyPassword': do_notify_password
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
     def customers_delete(self, customer_id):
         API_url = self.API_URL + 'customers/' + str(customer_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
