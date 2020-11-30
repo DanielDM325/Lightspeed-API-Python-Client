@@ -635,6 +635,7 @@ class LightspeedAPIClient:
         payload = {
             'category': {
                 'parent': parent,
+                'isVisible': is_visible,
                 'type': _type,
                 'title': title,
                 'full_title': full_title,
