@@ -216,6 +216,20 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def products_relation_create(self, product_id, product_id_relation):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/relations.json'
+        payload = {
+            'productRelation': {
+                'relatedProduct': product_id_relation
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
         API_url = self.API_URL + 'variants.json?'
         if product != '':
             API_url = API_url + 'product=' + str(product) + '&'
