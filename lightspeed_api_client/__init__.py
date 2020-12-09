@@ -207,6 +207,15 @@ class LightspeedAPIClient:
             return None
 
     def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
+    def products_relation_get(self, product_id):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/relations.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
         API_url = self.API_URL + 'variants.json?'
         if product != '':
             API_url = API_url + 'product=' + str(product) + '&'
