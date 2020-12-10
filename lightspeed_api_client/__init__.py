@@ -935,6 +935,35 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def discounts_create(self, code, is_active=True, start_date='today', end_date='+1 month', _type='percentage', discount=10, apply_to='all', categories='', products='',
+                         shipment='default', usage_limit=10, times_used=0, minimum_amount=0, before_tax=False, minimum_after=True):
+        API_url = self.API_URL + 'discounts.json'
+        payload = {
+            'discount': {
+                'code': code,
+                'isActive': is_active,
+                'startDate': start_date,
+                'endDate': end_date,
+                'type': _type,
+                'discount': discount,
+                'applyTo': apply_to,
+                'categories': categories,
+                'products': products,
+                'shipment': shipment,
+                'usageLimit': usage_limit,
+                'timesUsed': times_used,
+                'minimumAmount': float(minimum_amount),
+                'before_tax': before_tax,
+                'minimum_after': minimum_after
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.text
+        else:
+            return None
+
     def account_permissions(self):
         API_url = self.API_URL + 'account/permissions.json'
         response = requests.get(API_url, auth=self.credentials)
