@@ -791,6 +791,22 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def taxes_create(self, rate, title, is_default=False):
+        API_url = self.API_URL + 'taxes.json'
+        payload = {
+            'tax': {
+                'isDefault': is_default,
+                'rate': rate,
+                'title': title
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
     def order_get(self, number=None, page=1, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None):
         API_url = self.API_URL + 'orders.json?'
         if number:
