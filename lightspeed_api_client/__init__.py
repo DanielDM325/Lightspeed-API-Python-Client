@@ -351,9 +351,9 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def variants_create(self, product_id, is_default=True, article_code='', ean='', sku='', price_excl=0, price_incl=0, price_cost=0, stock_tracking='disabled', stock_level=100,
-                        stock_alert=0, stock_minimum=0, stock_sold=0, stock_buy_minimum=1, stock_buy_maximum=10000, weight=0, volume=0, colli=1, size_X=0, size_Y=0, size_Z=0,
-                        title='Default', tax_id=None):
+    def variants_create(self, product_id, is_default=False, article_code='', ean='', sku='', price_excl=0, price_incl=0, price_cost=0, old_price_excl=0, stock_tracking='disabled',
+                        stock_level=100, stock_alert=0, stock_minimum=0, stock_sold=0, stock_buy_minimum=1, stock_buy_maximum=10000, weight=0, volume=0, colli=1, size_X=0,
+                        size_Y=0, size_Z=0, title='Default', tax_id=None):
         API_url = self.API_URL + 'variants.json'
         payload = {
             'variant': {
@@ -364,6 +364,7 @@ class LightspeedAPIClient:
                 'priceExcl': price_excl,
                 'priceIncl': price_incl,
                 'priceCost': price_cost,
+                'oldPriceExcl': old_price_excl,
                 'stockTracking': stock_tracking,
                 'stockLevel': stock_level,
                 'stockAlert': stock_alert,
