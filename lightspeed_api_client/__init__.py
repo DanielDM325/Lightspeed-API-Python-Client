@@ -841,6 +841,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def checkout_validate(self, checkout_id):
+        API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '/validate.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def customers_get(self, page=1, limit=50):
         API_url = self.API_URL + 'customers.json'
         filters = {
