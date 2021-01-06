@@ -828,6 +828,19 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def checkout_create_add_product(self, checkout_id, variant_id, quantity=1):
+        API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '/products.json'
+        payload = {
+            'variant_id': variant_id,
+            'quantity': quantity
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
     def customers_get(self, page=1, limit=50):
         API_url = self.API_URL + 'customers.json'
         filters = {
