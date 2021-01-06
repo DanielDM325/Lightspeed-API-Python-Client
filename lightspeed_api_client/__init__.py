@@ -836,6 +836,16 @@ class LightspeedAPIClient:
             return response.json()
         else:
             return None
+
+    def checkout_get_id(self, checkout_id):
+        API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def checkout_create_add_product(self, checkout_id, variant_id, quantity=1):
         API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '/products.json'
         payload = {
