@@ -1,4 +1,4 @@
-![Node Development logo](https://nodedevelopment.net/wp-content/uploads/2017/04/Node-Development-logo.png)
+![Node Development logo](https://www.nodedevelopment.net/wp-content/uploads/logo-Node-Development.png)
 # Lightspeed API Python Client
 > Developed by Node Development
 
