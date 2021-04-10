@@ -1109,6 +1109,28 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def review_create(self, score, name, content, customer_id, product_id, created_at=None, is_visible=True, language='nl'):
+        API_url = self.API_URL + 'reviews.json'
+        payload = {
+            'review': {
+                'score': score,
+                'name': name,
+                'content': content,
+                'customer': customer_id,
+                'product': product_id,
+                'createdAt': created_at if created_at else datetime.datetime.now().astimezone().replace(microsecond=0).isoformat(),
+                'isVisible': is_visible,
+                'language': language,
+                'email': 'test@live.nl'
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
