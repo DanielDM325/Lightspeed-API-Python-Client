@@ -1095,6 +1095,20 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def review_get(self, customer_id=None, page=1, limit=50):
+        API_url = self.API_URL + 'reviews.json'
+        filters = {
+            'customer': customer_id,
+            'page': page,
+            'limit': limit
+        }
+        response = requests.get(API_url, params=filters, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
