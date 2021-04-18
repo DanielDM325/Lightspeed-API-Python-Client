@@ -847,6 +847,29 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def order_update(self, order_id, status=None, payment_status=None, shipment_status=None, custom_status=None, memo=None, do_notify_new=None, do_notify_reminder=None,
+                     do_notify_cancelled=None, is_ready_for_pickup=None):
+        API_url = self.API_URL + 'orders/' + str(order_id) + '.json'
+        payload = {
+            'order': {
+                'status': status,
+                'paymentStatus': payment_status,
+                'shipmentStatus': shipment_status,
+                'customStatus': str(custom_status) if type(custom_status) == str else custom_status,
+                'memo': memo,
+                'doNotifyNew': do_notify_new,
+                'doNotifyReminder': do_notify_reminder,
+                'doNotifyCancelled': do_notify_cancelled,
+                'isReadyForPickup': is_ready_for_pickup
+            }
+        }
+        response = requests.put(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def checkout_get(self):
         API_url = self.API_URL + 'checkouts.json'
         response = requests.get(API_url, auth=self.credentials)
