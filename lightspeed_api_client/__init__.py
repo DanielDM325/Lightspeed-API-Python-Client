@@ -809,20 +809,18 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def order_get(self, number=None, page=1, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None):
-        API_url = self.API_URL + 'orders.json?'
-        if number:
-            API_url + API_url + 'number=' + str(number) + '&'
-        API_url = API_url + 'page=' + str(page) + '&'
-        if created_at_min:
-            API_url = API_url + 'created_at_min=' + created_at_min + '&'
-        if created_at_max:
-            API_url = API_url + 'created_at_max=' + created_at_max + '&'
-        if updated_at_min:
-            API_url = API_url + 'updated_at_min=' + updated_at_min + '&'
-        if updated_at_max:
-            API_url = API_url + 'updated_at_max=' + updated_at_max
-        response = requests.get(API_url, auth=self.credentials)
+    def order_get(self, number=None, limit=50, page=1, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None):
+        API_url = self.API_URL + 'orders.json?page=' + str(page)
+        filters = {
+            'number': number,
+            'limit': limit,
+            'page': page,
+            'created_at_min': created_at_min,
+            'created_at_max': created_at_max,
+            'updated_at_min': updated_at_min,
+            'updated_at_max': updated_at_max
+        }
+        response = requests.get(API_url, params=filters, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
