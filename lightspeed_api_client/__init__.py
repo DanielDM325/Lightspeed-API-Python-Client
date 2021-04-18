@@ -838,6 +838,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def order_get_id(self, order_id):
+        API_url = self.API_URL + 'orders/' + str(order_id) + '.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def checkout_get(self):
         API_url = self.API_URL + 'checkouts.json'
         response = requests.get(API_url, auth=self.credentials)
