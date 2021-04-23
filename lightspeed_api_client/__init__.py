@@ -494,20 +494,6 @@ class LightspeedAPIClient:
         else:
             return None
 
-    """
-    def product_images_create(self, id, image, image_path, image_name):
-        API_url = self.API_URL + 'products/' + str(id) + '/images.json'
-        headers = {'content-type': 'multipart/form-data'}
-        files = {'productImage[attachment]': (image_path, image), 'productImage[filename]': (None, image_name)}
-        response = requests.post(API_url, headers=headers, files=files, auth=self.credentials)
-        self.update_status(response)
-        print(response.status_code)
-        if response.status_code == 201:
-            return response.json()
-        else:
-            return None
-    """
-
     def product_images_delete(self, product_id, product_image_id):
         API_url = self.API_URL + 'products/' + str(product_id) + '/images/' + str(product_image_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
