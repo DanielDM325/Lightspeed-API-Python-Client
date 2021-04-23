@@ -235,7 +235,6 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def variants_get(self, product='', article_code='', ean='', sku='', hs='', limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
     def products_relation_get(self, product_id):
         API_url = self.API_URL + 'products/' + str(product_id) + '/relations.json'
         response = requests.get(API_url, auth=self.credentials)
@@ -287,29 +286,24 @@ class LightspeedAPIClient:
         else:
             return None
 
-        API_url = self.API_URL + 'variants.json?'
-        if product != '':
-            API_url = API_url + 'product=' + str(product) + '&'
-        if article_code != '':
-            API_url = API_url + 'article_code=' + str(article_code) + '&'
-        if ean != '':
-            API_url = API_url + 'ean=' + str(ean) + '&'
-        if sku:
-            API_url = API_url + 'sku=' + str(sku) + '&'
-        if hs != '':
-            API_url = API_url + 'hs=' + str(hs) + '&'
-        API_url = API_url + 'limit=' + str(limit) + '&'
-        API_url = API_url + 'page=' + str(page) + '&'
-        API_url = API_url + 'since_id=' + str(since_id) + '&'
-        if created_at_min != '':
-            API_url = API_url + 'created_at_min=' + str(created_at_min) + '&'
-        if created_at_max != '':
-            API_url = API_url + 'created_at_max=' + str(created_at_max) + '&'
-        if updated_at_min != '':
-            API_url = API_url + 'updated_at_min=' + str(updated_at_min) + '&'
-        if updated_at_max != '':
-            API_url = API_url + 'updated_at_max=' + str(updated_at_max) + '&'
-        response = requests.get(API_url, auth=self.credentials)
+    def variants_get(self, product=None, article_code=None, ean=None, sku=None, hs=None, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None,
+                     updated_at_max=None):
+        API_url = self.API_URL + 'variants.json'
+        filters = {
+            'product': product,
+            'article_code': article_code,
+            'ean': ean,
+            'sku': sku,
+            'hs': hs,
+            'limit': limit,
+            'page': page,
+            'since_id': since_id,
+            'created_at_min': created_at_min,
+            'created_at_max': created_at_max,
+            'updated_at_min': updated_at_min,
+            'updated_at_max': updated_at_max
+        }
+        response = requests.get(API_url, params=filters, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
