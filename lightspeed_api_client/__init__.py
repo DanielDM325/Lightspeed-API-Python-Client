@@ -523,8 +523,8 @@ class LightspeedAPIClient:
 
     def product_images_update(self, product_id, product_image_id, sorting_order):
         API_url = self.API_URL + 'products/' + str(product_id) + '/images/' + str(product_image_id) + '.json'
-        payload = {'productImage[sortOrder]': str(sorting_order)}
-        response = requests.put(API_url, data=payload, auth=self.credentials)
+        payload = {'productImage': {'sortOrder': 1}}
+        response = requests.put(API_url, json=payload, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
