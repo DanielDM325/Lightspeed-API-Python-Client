@@ -554,7 +554,6 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def webhook_get(self, limit=50, page=1, since_id=0, created_at_min='', created_at_max='', updated_at_min='', updated_at_max=''):
     def categories_product_create_bulk(self, product_id, category_ids):
         API_url = self.API_URL + 'categories/products/bulk.json'
         payload = {
