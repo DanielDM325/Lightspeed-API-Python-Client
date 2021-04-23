@@ -648,7 +648,7 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def category_image_post(self, category_id, attachment, file_name):
+    def category_image_create(self, category_id, attachment, file_name):
         API_url = self.API_URL + 'categories/' + str(category_id) + '/image.json'
         payload = {
             'categoryImage': {
