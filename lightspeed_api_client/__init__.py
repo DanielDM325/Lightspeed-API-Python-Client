@@ -416,7 +416,7 @@ class LightspeedAPIClient:
             'updated_at_min': updated_at_min,
             'updated_at_max': updated_at_max
         }
-        response = requests.get(API_url, params=filters auth=self.credentials)
+        response = requests.get(API_url, params=filters, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
