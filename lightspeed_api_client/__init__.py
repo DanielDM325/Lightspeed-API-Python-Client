@@ -1231,6 +1231,22 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def filters_create(self, title, position=None, is_active=True):
+        API_url = self.API_URL + 'filters.json'
+        payload = {
+            'filter': {
+                'title': title,
+                'position': position,
+                'isActive': is_active
+            }
+        }
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
