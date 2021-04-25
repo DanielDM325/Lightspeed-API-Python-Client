@@ -1263,6 +1263,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def filters_delete(self, filter_id):
+        API_url = self.API_URL + 'filters/' + str(filter_id) + '.json'
+        response = requests.delete(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 204:
+            return response.text
+        else:
+            return None
+
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
