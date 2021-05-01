@@ -167,8 +167,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def products_metafield_get(self, metafield_id, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None):
-        API_url = self.API_URL + 'products/' + str(metafield_id) + '/metafields.json'
+    def products_metafield_get(self, product_id, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None):
+        API_url = self.API_URL + 'products/' + str(product_id) + '/metafields.json'
         filters = {
             'limit': limit,
             'page': page,
