@@ -932,14 +932,12 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def checkout_create_update_payment_method(self, checkout_id):
+    def checkout_create_update_payment_method(self, checkout_id, payment_id='invoice'):
         API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '.json'
         payload = {
             'payment_method': {
-                'id': 'external',
-                'title': 'Node Development Migration',
-                'price_incl': 0.0,
-                'tax_rate': 0.0
+                'id': payment_id,
+                'method': 'Node Development Migration'
             }
         }
         response = requests.put(API_url, json=payload, auth=self.credentials)
