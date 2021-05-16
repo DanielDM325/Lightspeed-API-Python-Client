@@ -898,6 +898,76 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def checkout_create(self, mode, customer_email, customer_firstname, customer_lastname, customer_phone, billing_name, billing_address_1, billing_address_2, billing_number,
+                        billing_extension, billing_zip_code, billing_city, shipping_name, shipping_company, shipping_address_1, shipping_address_2, shipping_number,
+                        shipping_extension, shipping_zip_code, shipping_city, billing_region=None, billing_country='nl', shipping_region=None, shipping_country='nl',
+                        customer_gender=None, customer_birthdate=None, customer_mobile=None, customer_password=None, customer_middlename=None, customer_type=None,
+                        customer_company=None, customer_vatnumber=None, customer_cocnumber=None, comment='', memo='Node Development Migration', newsletter=False, terms=True,
+                        notifications=False):
+        API_url = self.API_URL + 'checkouts.json'
+
+        payload = {
+            'mode': mode,
+            'comment': comment,
+            'memo': memo,
+            'newsletter': newsletter,
+            'terms': terms,
+            'notifications': notifications,
+            'billing_address': {
+                'name': billing_name,
+                'address1': billing_address_1,
+                'address2': billing_address_2,
+                'number': str(billing_number),
+                'extension': str(billing_extension),
+                'zipcode': billing_zip_code,
+                'city': billing_city,
+                'region': billing_region,
+                'country': billing_country
+            },
+            'shipping_address': {
+                'name': shipping_name,
+                'company': shipping_company,
+                'address1': shipping_address_1,
+                'address2': shipping_address_2,
+                'number': str(shipping_number),
+                'extension': str(shipping_extension),
+                'zipcode': shipping_zip_code,
+                'city': shipping_city,
+                'region': shipping_region,
+                'country': shipping_country
+            }
+        }
+        if mode == 'guest':
+            payload['customer'] = {
+                'email': customer_email,
+                'firstname': customer_firstname,
+                'lastname': customer_lastname,
+                'phone': customer_phone
+            }
+        else:
+            payload['customer'] = {
+                'gender': customer_gender,
+                'birthdate': customer_birthdate,
+                'phone': customer_phone,
+                'mobile': customer_mobile,
+                'email': customer_email,
+                'password': customer_password,
+                'firstname': customer_firstname,
+                'middlename': customer_middlename,
+                'lastname': customer_lastname,
+                'type': customer_type,
+                'company': customer_company,
+                'vatnumber': customer_vatnumber,
+                'cocnumber': customer_cocnumber
+            }
+
+        response = requests.post(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 201:
+            return response.json()
+        else:
+            return None
+
     def checkout_create_add_product(self, checkout_id, variant_id, quantity=1):
         API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '/products.json'
         payload = {
