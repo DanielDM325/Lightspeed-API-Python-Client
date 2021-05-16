@@ -983,6 +983,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def checkout_create_shipping_methods_get(self, checkout_id):
+        API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '/shipment_methods.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def checkout_create_update_shipping_method(self, checkout_id, shipment_id='external', title='API shipment', price_incl=0.0, tax_rate=0.21, data=None):
         API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '.json'
         payload = None
