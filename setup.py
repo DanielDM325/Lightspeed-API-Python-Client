@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="lightspeed-api-client-dmizrahi",
-    version="0.1.0",
+    version="0.2.0",
     author="Daniel Mizrahi",
     author_email="dmizrahi@nodedevelopment.net",
     description="An API client to execute REST services by Lightspeed",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://nodedevelopment.net/",
+    url="https://www.nodedevelopment.net/",
     project_url={
         'Documentation': 'https://github.com/DanielDM325/Lightspeed-API-Python-Client/wiki',
         'Source': 'https://github.com/DanielDM325/Lightspeed-API-Python-Client'
@@ -27,9 +27,10 @@ setuptools.setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Topic :: Software Development :: Build Tools"
     ],
     python_requires='>=3.5',
-    license='None',
+    license='GNU General Public License v3.0',
     install_requires=['requests']
 )
