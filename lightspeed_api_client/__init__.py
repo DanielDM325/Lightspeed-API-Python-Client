@@ -911,20 +911,25 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def checkout_create_update_shipping_method(self, checkout_id, delivery_date, delivery_time):
+    def checkout_create_update_shipping_method(self, checkout_id, shipment_id='external', title='API shipment', price_incl=0.0, tax_rate=0.21, data=None):
         API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '.json'
-        payload = {
-            'shipment_method': {
-                'id': 'external',
-                'title': 'Node Development Migration',
-                'price_incl': 0.0,
-                'tax_rate': 0.0,
-                'data': {
-                    'delivery_date': delivery_date,
-                    'delivery_time': delivery_time,
+        payload = None
+        if shipment_id == 'external':
+            payload = {
+                'shipment_method': {
+                    'id': shipment_id,
+                    'title': title,
+                    'price_incl': price_incl,
+                    'tax_rate': tax_rate,
+                    'data': data
                 }
             }
-        }
+        else:
+            payload = {
+                'shipment_method': {
+                    'id': shipment_id
+                }
+            }
         response = requests.put(API_url, json=payload, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
