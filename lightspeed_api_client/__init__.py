@@ -1018,6 +1018,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def checkout_create_payment_methods_get(self, checkout_id):
+        API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '/payment_methods.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def checkout_create_update_payment_method(self, checkout_id, payment_id='invoice', method='Pay By Invoice'):
         API_url = self.API_URL + 'checkouts/' + str(checkout_id) + '.json'
         payload = {
