@@ -356,6 +356,7 @@ class LightspeedAPIClient:
                 'oldPriceIncl': old_price_incl,
                 'stockTracking': stock_tracking,
                 'stockLevel': stock_level,
+                'stockAlert': stock_alert,
                 'stockMinimum': stock_minimum,
                 'stockSold': stock_sold,
                 'stockBuyMinimum': stock_buy_minimum,
