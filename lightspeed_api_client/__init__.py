@@ -99,6 +99,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def products_delete(self, product_id):
+        API_url = self.API_URL + 'products/' + str(product_id) + '.json'
+        response = requests.delete(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 204:
+            return response.text
+        else:
+            return None
+
     def products_attribute_get(self, product_id):
         API_url = self.API_URL + 'products/' + str(product_id) + '/attributes.json'
         response = requests.get(API_url, auth=self.credentials)
