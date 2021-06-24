@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module __init__</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>__init__</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cdanie%5Cinformatica%5Clightspeed-api-python-client%5Clightspeed_api_client%5C__init__.py">c:\users\danie\informatica\lightspeed-api-python-client\lightspeed_api_client\__init__.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+<a href="random.html">random</a><br>
+</td><td width="25%" valign=top><a href="requests.html">requests</a><br>
+<a href="string.html">string</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="__init__.html#LightspeedAPIClient">LightspeedAPIClient</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LightspeedAPIClient">class <strong>LightspeedAPIClient</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#LightspeedAPIClient">LightspeedAPIClient</a>(API_key,&nbsp;API_secret)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="LightspeedAPIClient-__init__"><strong>__init__</strong></a>(self, API_key, API_secret)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="LightspeedAPIClient-account_permissions"><strong>account_permissions</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-brands_count"><strong>brands_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-brands_get"><strong>brands_get</strong></a>(self, limit=50, page=1)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-categories_product_count"><strong>categories_product_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-categories_product_create_bulk"><strong>categories_product_create_bulk</strong></a>(self, product_id, category_ids)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-categories_product_get"><strong>categories_product_get</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-categories_product_get_id"><strong>categories_product_get_id</strong></a>(self, category_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-category_count"><strong>category_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-category_create"><strong>category_create</strong></a>(self, parent, title, full_title, is_visible=True, _type='category', description='', content='')</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-category_get"><strong>category_get</strong></a>(self, parent)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-category_get_id"><strong>category_get_id</strong></a>(self, category_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-category_image_create"><strong>category_image_create</strong></a>(self, category_id, attachment, file_name)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-category_image_delete"><strong>category_image_delete</strong></a>(self, category_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-category_image_get"><strong>category_image_get</strong></a>(self, category_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_create"><strong>checkout_create</strong></a>(self, mode, customer_email, billing_name, billing_address_1, billing_address_2, billing_number, billing_extension, billing_zip_code, billing_city, shipping_name, shipping_company, shipping_address_1, shipping_address_2, shipping_number, shipping_extension, shipping_zip_code, shipping_city, billing_region=None, billing_country='nl', shipping_region=None, shipping_country='nl', customer_gender=None, customer_birthdate=None, customer_phone=None, customer_mobile=None, customer_password=None, customer_firstname=None, customer_middlename=None, customer_lastname=None, customer_type=None, customer_company=None, customer_vatnumber=None, customer_cocnumber=None, comment='', memo='Node Development Migration', newsletter=False, terms=True, notifications=False)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_create_add_product"><strong>checkout_create_add_product</strong></a>(self, checkout_id, variant_id, quantity=1)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_create_update_payment_method"><strong>checkout_create_update_payment_method</strong></a>(self, checkout_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_create_update_shipping_method"><strong>checkout_create_update_shipping_method</strong></a>(self, checkout_id, delivery_date, delivery_time)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_finish"><strong>checkout_finish</strong></a>(self, checkout_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_get"><strong>checkout_get</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_get_id"><strong>checkout_get_id</strong></a>(self, checkout_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-checkout_validate"><strong>checkout_validate</strong></a>(self, checkout_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-customers_count"><strong>customers_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-customers_create"><strong>customers_create</strong></a>(self, e_mail, first_name, last_name, is_confirmed=True, referral_id='', gender='', birth_date='', national_id='', password='', middle_name='', phone='', mobile='', is_company=False, company_name='', company_coc_number='', company_vat_number='', address_billing_name='', address_billing_street='', address_billing_street_2='', address_billing_number='', address_billing_extenion='', address_billing_zip_code='', address_billing_city='', address_billing_region='', address_billing_country='nl', address_shipping_company='', address_shipping_name='', address_shipping_street='', address_shipping_street_2='', address_shipping_number='', address_shipping_extension='', address_shipping_zip_code='', address_shipping_city='', address_shipping_region='', address_shipping_country='nl', memo='', do_notify_registered=False, do_notify_confirmed=False, do_notify_password=False)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-customers_delete"><strong>customers_delete</strong></a>(self, customer_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-customers_get"><strong>customers_get</strong></a>(self, page=1, limit=50)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-customers_get_id"><strong>customers_get_id</strong></a>(self, customer_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-delivery_dates_get"><strong>delivery_dates_get</strong></a>(self, limit=50, page=1)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-discounts_count"><strong>discounts_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-discounts_create"><strong>discounts_create</strong></a>(self, code, is_active=True, start_date='today', end_date='+1 month', _type='percentage', discount=10, apply_to='all', categories='', products='', shipment='default', usage_limit=10, times_used=0, minimum_amount=0, before_tax=False, minimum_after=True)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-discounts_get"><strong>discounts_get</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-discounts_get_id"><strong>discounts_get_id</strong></a>(self, discount_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filter_values_count"><strong>filter_values_count</strong></a>(self, filter_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filter_values_create"><strong>filter_values_create</strong></a>(self, filter_id, title, position=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filter_values_delete"><strong>filter_values_delete</strong></a>(self, filter_id, filter_value_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filter_values_get"><strong>filter_values_get</strong></a>(self, filter_id, limit=50, page=1)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filter_values_get_id"><strong>filter_values_get_id</strong></a>(self, filter_id, filter_value_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filter_values_update"><strong>filter_values_update</strong></a>(self, filter_id, filter_value_id, title=None, position=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filters_count"><strong>filters_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filters_create"><strong>filters_create</strong></a>(self, title, position=None, is_active=True)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filters_delete"><strong>filters_delete</strong></a>(self, filter_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filters_get"><strong>filters_get</strong></a>(self, limit=50, page=1)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filters_get_id"><strong>filters_get_id</strong></a>(self, filter_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-filters_update"><strong>filters_update</strong></a>(self, filter_id, title=None, position=None, is_active=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-metafields_count"><strong>metafields_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-metafields_create"><strong>metafields_create</strong></a>(self, owner_type, owner_id, key, value)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-metafields_delete"><strong>metafields_delete</strong></a>(self, metafield_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-metafields_get"><strong>metafields_get</strong></a>(self, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-metafields_get_id"><strong>metafields_get_id</strong></a>(self, metafield_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-metafields_update"><strong>metafields_update</strong></a>(self, metafield_id, owner_type, owner_id, key, value)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-order_count"><strong>order_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-order_get"><strong>order_get</strong></a>(self, number=None, limit=50, page=1, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-order_get_id"><strong>order_get_id</strong></a>(self, order_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-order_update"><strong>order_update</strong></a>(self, order_id, status=None, payment_status=None, shipment_status=None, custom_status=None, memo=None, do_notify_new=None, do_notify_reminder=None, do_notify_cancelled=None, is_ready_for_pickup=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-product_images_create"><strong>product_images_create</strong></a>(self, product_id, image, file_name)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-product_images_delete"><strong>product_images_delete</strong></a>(self, product_id, product_image_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-product_images_get"><strong>product_images_get</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-product_images_update"><strong>product_images_update</strong></a>(self, product_id, product_image_id, sorting_order)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_attribute_count"><strong>products_attribute_count</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_attribute_delete"><strong>products_attribute_delete</strong></a>(self, product_id, product_attribute_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_attribute_get"><strong>products_attribute_get</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_attribute_update"><strong>products_attribute_update</strong></a>(self, product_id, product_attribute_id, value)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_count"><strong>products_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_create"><strong>products_create</strong></a>(self, visibility='hidden', data_01='', data_02='', data_03='', title='', full_title='', description='', content='', brand_id=None, supplier_id=None, delivery_date_id=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_filter_value_count"><strong>products_filter_value_count</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_filter_value_create"><strong>products_filter_value_create</strong></a>(self, product_id, filter_id, filter_value_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_filter_value_delete"><strong>products_filter_value_delete</strong></a>(self, product_id, filter_value_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_filter_value_get"><strong>products_filter_value_get</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_get"><strong>products_get</strong></a>(self, brand=None, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_get_id"><strong>products_get_id</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_metafield_count"><strong>products_metafield_count</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_metafield_create"><strong>products_metafield_create</strong></a>(self, product_id, key, value)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_metafield_delete"><strong>products_metafield_delete</strong></a>(self, product_id, metafield_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_metafield_get"><strong>products_metafield_get</strong></a>(self, metafield_id, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_metafield_update"><strong>products_metafield_update</strong></a>(self, product_id, metafield_id, key, value)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_relation_count"><strong>products_relation_count</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_relation_create"><strong>products_relation_create</strong></a>(self, product_id, product_id_relation)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_relation_delete"><strong>products_relation_delete</strong></a>(self, product_id, product_id_relation)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_relation_get"><strong>products_relation_get</strong></a>(self, product_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_relation_get_id"><strong>products_relation_get_id</strong></a>(self, product_id, product_id_relation)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-products_update"><strong>products_update</strong></a>(self, product_id, data01=None, content=None, title=None, full_title=None, brand=None, supplier=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-redirect_count"><strong>redirect_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-redirect_create"><strong>redirect_create</strong></a>(self, is_permanent, url, target)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-redirect_get"><strong>redirect_get</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-redirect_get_id"><strong>redirect_get_id</strong></a>(self, redirect_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-review_count"><strong>review_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-review_create"><strong>review_create</strong></a>(self, score, name, content, customer_id, product_id, created_at=None, is_visible=True, language='nl')</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-review_delete"><strong>review_delete</strong></a>(self, review_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-review_get"><strong>review_get</strong></a>(self, customer_id=None, page=1, limit=50)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-review_get_id"><strong>review_get_id</strong></a>(self, review_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-review_update"><strong>review_update</strong></a>(self, review_id, is_visible=None, score=None, name=None, content=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-sleep_reset"><strong>sleep_reset</strong></a>(self, verbose=False)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-suppliers_count"><strong>suppliers_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-suppliers_get"><strong>suppliers_get</strong></a>(self, limit=50, page=1)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-taxes_create"><strong>taxes_create</strong></a>(self, rate, title, is_default=False)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-taxes_get"><strong>taxes_get</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-update_status"><strong>update_status</strong></a>(self, response)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-variants_count"><strong>variants_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-variants_create"><strong>variants_create</strong></a>(self, product_id, is_default=False, article_code='', ean='', sku='', price_excl=0, price_incl=0, price_cost=0, old_price_excl=0, stock_tracking='disabled', stock_level=100, stock_alert=0, stock_minimum=0, stock_sold=0, stock_buy_minimum=1, stock_buy_maximum=10000, weight=0, volume=0, colli=1, size_X=0, size_Y=0, size_Z=0, title='Default', tax_id=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-variants_get"><strong>variants_get</strong></a>(self, product=None, article_code=None, ean=None, sku=None, hs=None, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-variants_get_id"><strong>variants_get_id</strong></a>(self, variant_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-variants_update"><strong>variants_update</strong></a>(self, variant_id, is_default=None, sort_order=None, article_code=None, ean=None, sku=None, hs=None, price_excl=None, price_incl=None, price_cost=None, old_price_excl=None, old_price_incl=None, stock_tracking=None, stock_level=None, stock_alert=None, stock_minimum=None, stock_sold=None, stock_buy_minimum=None, stock_buy_maximum=None, weight=None, volume=None, colli=None, size_X=None, size_Y=None, size_Z=None, title=None, tax_id=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-webhook_count"><strong>webhook_count</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-webhook_create"><strong>webhook_create</strong></a>(self, is_active, item_group, item_action, address, language='nl', _format='json')</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-webhook_delete"><strong>webhook_delete</strong></a>(self, webhook_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-webhook_get"><strong>webhook_get</strong></a>(self, limit=50, page=1, since_id=0, created_at_min=None, created_at_max=None, updated_at_min=None, updated_at_max=None)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-webhook_get_id"><strong>webhook_get_id</strong></a>(self, webhook_id)</dt></dl>
+
+<dl><dt><a name="LightspeedAPIClient-webhook_update"><strong>webhook_update</strong></a>(self, webhook_id, is_active, item_group, item_action, address, _format='json')</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>API_URL</strong> = 'https://api.webshopapp.com/nl/'</dl>
+
+<dl><dt><strong>credentials</strong> = None</dl>
+
+<dl><dt><strong>rate_limit_remaining</strong> = None</dl>
+
+<dl><dt><strong>rate_limit_reset</strong> = None</dl>
+
+<dl><dt><strong>status_code</strong> = None</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-number_of_pages"><strong>number_of_pages</strong></a>(number_of_items, page_size=50)</dt></dl>
+</td></tr></table>
+</body></html>

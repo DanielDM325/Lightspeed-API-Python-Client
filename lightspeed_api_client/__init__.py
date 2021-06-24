@@ -339,7 +339,8 @@ class LightspeedAPIClient:
 
     def variants_update(self, variant_id, is_default=None, sort_order=None, article_code=None, ean=None, sku=None, hs=None, price_excl=None, price_incl=None, price_cost=None,
                         old_price_excl=None, old_price_incl=None, stock_tracking=None, stock_level=None, stock_alert=None, stock_minimum=None, stock_sold=None,
-                        stock_buy_minimum=None, stock_buy_maximum=None, weight=None, volume=None, colli=None, size_X=None, size_Y=None, size_Z=None, title=None, tax_id=None):
+                        stock_buy_minimum=None, stock_buy_maximum=None, weight=None, weight_value=None, weight_unit=None, volume=None, colli=None, size_X=None, size_Y=None,
+                        size_Z=None, title=None, tax_id=None):
         API_url = self.API_URL + 'variants/' + str(variant_id) + '.json?'
         payload = {
             'variant': {
@@ -362,6 +363,8 @@ class LightspeedAPIClient:
                 'stockBuyMinimum': stock_buy_minimum,
                 'stockBuyMaximum': stock_buy_maximum,
                 'weight': weight,
+                'weightValue': weight_value,
+                'weightUnit': weight_unit,
                 'volume': volume,
                 'colli': colli,
                 'sizeX': size_X,
@@ -379,8 +382,8 @@ class LightspeedAPIClient:
             return None
 
     def variants_create(self, product_id, is_default=False, article_code='', ean='', sku='', price_excl=0, price_incl=0, price_cost=0, old_price_excl=0, stock_tracking='disabled',
-                        stock_level=100, stock_alert=0, stock_minimum=0, stock_sold=0, stock_buy_minimum=1, stock_buy_maximum=10000, weight=0, volume=0, colli=1, size_X=0,
-                        size_Y=0, size_Z=0, title='Default', tax_id=None):
+                        stock_level=100, stock_alert=0, stock_minimum=0, stock_sold=0, stock_buy_minimum=1, stock_buy_maximum=10000, weight=0, weight_value=0, weight_unit='kg',
+                        volume=0, colli=1, size_X=0, size_Y=0, size_Z=0, title='Default', tax_id=None):
         API_url = self.API_URL + 'variants.json'
         payload = {
             'variant': {
@@ -400,6 +403,8 @@ class LightspeedAPIClient:
                 'stockBuyMinimum': stock_buy_minimum,
                 'stockByMaximum': stock_buy_maximum,
                 'weight': weight,
+                'weightValue': weight_value,
+                'weightUnit': weight_unit,
                 'volume': volume,
                 'colli': colli,
                 'sizeX': size_X,
