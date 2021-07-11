@@ -874,8 +874,8 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def order_update(self, order_id, status=None, payment_status=None, shipment_status=None, custom_status=None, memo=None, do_notify_new=None, do_notify_reminder=None,
-                     do_notify_cancelled=None, is_ready_for_pickup=None):
+    def order_update(self, order_id, status=None, payment_status=None, shipment_status=None, custom_status=None, memo=None, do_notify_new=False, do_notify_reminder=False,
+                     do_notify_cancelled=False, is_ready_for_pickup=None):
         API_url = self.API_URL + 'orders/' + str(order_id) + '.json'
         payload = {
             'order': {
