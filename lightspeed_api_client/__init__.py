@@ -1590,6 +1590,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def textpages_get_id(self, textpage_id):
+        API_url = self.API_URL + 'textpages/' + str(textpage_id) + '.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def update_status(self, response):
         self.rate_limit_remaining = response.headers['X-RateLimit-Remaining'].split('/')
         self.rate_limit_reset = response.headers['X-RateLimit-Reset'].split('/')
