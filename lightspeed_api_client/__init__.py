@@ -734,6 +734,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def category_delete(self, category_id):
+        API_url = self.API_URL + 'categories/' + str(category_id) + '.json'
+        response = requests.delete(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 204:
+            return response.text
+        else:
+            return None
+
     def redirect_get(self):
         API_url = self.API_URL + 'redirects.json'
         response = requests.get(API_url, auth=self.credentials)
