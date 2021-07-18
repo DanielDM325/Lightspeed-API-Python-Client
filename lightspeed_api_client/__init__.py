@@ -804,6 +804,15 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def brands_get_id(self, brand_id):
+        API_url = self.API_URL + 'brands/' + str(brand_id) + '.json'
+        response = requests.get(API_url, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def suppliers_count(self):
         API_url = self.API_URL + 'metafields/count.json'
         response = requests.get(API_url, auth=self.credentials)
