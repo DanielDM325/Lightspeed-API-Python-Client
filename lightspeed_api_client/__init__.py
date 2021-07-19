@@ -734,6 +734,28 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def category_update(self, category_id, is_visible=None, _type=None, title=None, full_title=None, description=None, content=None, parent=None):
+        API_url = self.API_URL + 'categories/' + str(category_id) + '.json'
+        payload = {
+            'category': {
+                'parent': parent,
+                'isVisible': is_visible,
+                'type': _type,
+                'title': title,
+                'full_title': full_title,
+                'description': description,
+                'content': content
+            }
+        }
+        response = requests.put(API_url, json=payload, auth=self.credentials)
+        print(response)
+        print(response.text)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def category_delete(self, category_id):
         API_url = self.API_URL + 'categories/' + str(category_id) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
