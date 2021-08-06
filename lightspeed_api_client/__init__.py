@@ -1608,6 +1608,27 @@ class LightspeedAPIClient:
         else:
             return None
 
+    def blog_articles_update(self, blog_article_id, is_published=None, published_at=None, url=None, title=None, author=None, summary=None, content=None, language=None):
+        API_url = self.API_URL + 'blogs/articles/' + str(blog_article_id) + '.json'
+        payload = {
+            'blogArticle': {
+                'isPublished': is_published,
+                'publishedAt': published_at,
+                'url': url,
+                'title': title,
+                'author': author,
+                'summary': summary,
+                'content': content,
+                'language': language,
+            }
+        }
+        response = requests.put(API_url, json=payload, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
     def textpages_get(self, limit=50, page=1):
         API_url = self.API_URL + 'textpages.json'
         filters = {
