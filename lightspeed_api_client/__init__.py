@@ -1590,15 +1590,6 @@ class LightspeedAPIClient:
         else:
             return None
 
-    def blog_articles_count(self):
-        API_url = self.API_URL + 'blogs/articles/count.json'
-        response = requests.get(API_url, auth=self.credentials)
-        self.update_status(response)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            return None
-
     def blog_articles_get(self, limit=50, page=1):
         API_url = self.API_URL + 'blogs/articles.json'
         filters = {
@@ -1606,6 +1597,15 @@ class LightspeedAPIClient:
             'page': page
         }
         response = requests.get(API_url, params=filters, auth=self.credentials)
+        self.update_status(response)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
+    def blog_articles_count(self):
+        API_url = self.API_URL + 'blogs/articles/count.json'
+        response = requests.get(API_url, auth=self.credentials)
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
