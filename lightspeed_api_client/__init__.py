@@ -297,7 +297,6 @@ class LightspeedAPIClient:
     def products_relation_delete(self, product_id, product_id_relation):
         API_url = self.API_URL + 'products/' + str(product_id) + '/relations/' + str(product_id_relation) + '.json'
         response = requests.delete(API_url, auth=self.credentials)
-        print(response.text)
         self.update_status(response)
         if response.status_code == 204:
             return response.text
@@ -748,8 +747,6 @@ class LightspeedAPIClient:
             }
         }
         response = requests.put(API_url, json=payload, auth=self.credentials)
-        print(response)
-        print(response.text)
         self.update_status(response)
         if response.status_code == 200:
             return response.json()
